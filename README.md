@@ -38,4 +38,4 @@ pnpm dev
 
 ## Autor
 
-Philipp Huberty · [philipp.huberty.de](https://philipp.huberty.de)
+Die Website ist komplett KI-Generiert (Recherche, Design, Umsetzung, Fact-Checking, Übersetzung) mit Manus.im unter der Regie von Philipp Huberty · [philipp.huberty.de](https://philipp.huberty.de)
