@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://filmhistory.smartthings.de/sitemap.xml
