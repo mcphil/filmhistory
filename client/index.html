@@ -21,17 +21,26 @@
     <meta name="google-site-verification" content="AJ3yxpSRAq3KeaMHAkPiT60LC2fplBvv3FG0KoN9Df4" />
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <meta property="og:url" content="https://filmhistory.smartthings.de/" />
     <meta property="og:title" content="Die Geschichte des Bewegtbildes – Eine interaktive Timeline" />
     <meta property="og:description" content="Von der Camera Obscura bis zur KI: Wie Technik und Filmsprache sich von 1650 bis 2026 gegenseitig herausgefordert, befreit und manchmal auch gefesselt haben." />
     <meta property="og:image" content="https://d2xsxph8kpxj0f.cloudfront.net/101220242/eMM848s9vZH5Nks5dZfxni/hero_filmgeschichte_13c7c340.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Filmstreifen mit historischen Filmszenen – Die Geschichte des Bewegtbildes" />
+    <meta property="og:image:alt" content="Filmstreifen mit historischen Filmszenen – Die Geschichte des Bewegtbildes von der Camera Obscura bis zur KI" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:site_name" content="Die Geschichte des Bewegtbildes" />
+    <meta property="article:author" content="https://philipp.huberty.de" />
+    <meta property="article:publisher" content="https://smartthings.de" />
+    <meta property="article:published_time" content="2026-03-08T00:00:00+01:00" />
+    <meta property="article:modified_time" content="2026-03-08T00:00:00+01:00" />
+    <meta property="article:section" content="Filmgeschichte" />
+    <meta property="article:tag" content="Filmgeschichte" />
+    <meta property="article:tag" content="Bewegtbild" />
+    <meta property="article:tag" content="CGI" />
+    <meta property="article:tag" content="Nouvelle Vague" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -39,10 +48,10 @@
     <meta name="twitter:title" content="Die Geschichte des Bewegtbildes – Eine interaktive Timeline" />
     <meta name="twitter:description" content="Von der Camera Obscura bis zur KI: Wie Technik und Filmsprache sich von 1650 bis 2026 gegenseitig herausgefordert und befreit haben." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/101220242/eMM848s9vZH5Nks5dZfxni/hero_filmgeschichte_13c7c340.jpg" />
-    <meta name="twitter:image:alt" content="Filmstreifen mit historischen Filmszenen" />
+    <meta name="twitter:image:alt" content="Filmstreifen mit historischen Filmszenen – Die Geschichte des Bewegtbildes" />
     <meta name="twitter:creator" content="@philipphuberty" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- 1. WebSite Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,6 +59,59 @@
       "name": "Die Geschichte des Bewegtbildes",
       "url": "https://filmhistory.smartthings.de/",
       "description": "Eine interaktive Timeline der Filmgeschichte von der Camera Obscura bis zur KI – wie Technik und Filmsprache sich von 1650 bis 2026 gegenseitig herausgefordert haben.",
+      "inLanguage": ["de", "en"],
+      "author": {
+        "@type": "Person",
+        "name": "Philipp Huberty",
+        "url": "https://philipp.huberty.de"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Smart Things Internetkommunikation GmbH",
+        "url": "https://smartthings.de"
+      }
+    }
+    </script>
+
+    <!-- 2. Organization Schema (verknüpft filmhistory.smartthings.de mit smartthings.de) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Smart Things Internetkommunikation GmbH",
+      "url": "https://smartthings.de",
+      "sameAs": [
+        "https://smartthings.de",
+        "https://filmhistory.smartthings.de"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Wichernstr. 6",
+        "addressLocality": "Solingen",
+        "postalCode": "42653",
+        "addressCountry": "DE"
+      },
+      "employee": {
+        "@type": "Person",
+        "name": "Philipp Huberty",
+        "url": "https://philipp.huberty.de",
+        "jobTitle": "Geschäftsführer"
+      }
+    }
+    </script>
+
+    <!-- 3. Article Schema (signalisiert Google Aktualität und Autorschaft) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Die Geschichte des Bewegtbildes – Von der Camera Obscura bis zur KI",
+      "description": "Eine detaillierte interaktive Timeline der Filmgeschichte von 1650 bis 2026: Wie Technik und Filmsprache sich gegenseitig herausgefordert, befreit und manchmal auch gefesselt haben.",
+      "url": "https://filmhistory.smartthings.de/",
+      "datePublished": "2026-03-08T00:00:00+01:00",
+      "dateModified": "2026-03-08T00:00:00+01:00",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/101220242/eMM848s9vZH5Nks5dZfxni/hero_filmgeschichte_13c7c340.jpg",
+      "inLanguage": ["de", "en"],
       "author": {
         "@type": "Person",
         "name": "Philipp Huberty",
@@ -59,34 +121,84 @@
         "@type": "Organization",
         "name": "Smart Things Internetkommunikation GmbH",
         "url": "https://smartthings.de",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Wichernstr. 6",
-          "addressLocality": "Solingen",
-          "postalCode": "42653",
-          "addressCountry": "DE"
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://smartthings.de/favicon.ico"
         }
       },
-      "inLanguage": ["de", "en"]
+      "about": [
+        {"@type": "Thing", "name": "Filmgeschichte"},
+        {"@type": "Thing", "name": "Stummfilm"},
+        {"@type": "Thing", "name": "Tonfilm"},
+        {"@type": "Thing", "name": "Farbfilm"},
+        {"@type": "Thing", "name": "CGI"},
+        {"@type": "Thing", "name": "Nouvelle Vague"},
+        {"@type": "Thing", "name": "New Hollywood"},
+        {"@type": "Thing", "name": "Digitalfilm"},
+        {"@type": "Thing", "name": "Künstliche Intelligenz im Film"}
+      ],
+      "keywords": "Filmgeschichte, Bewegtbild, Stummfilm, Tonfilm, Farbfilm, CGI, Nouvelle Vague, New Hollywood, Digitalfilm, KI im Film"
     }
     </script>
 
-    <!-- FAQ Structured Data (JSON-LD FAQPage) -->
+    <!-- 4. BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Smart Things",
+          "item": "https://smartthings.de"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Die Geschichte des Bewegtbildes",
+          "item": "https://filmhistory.smartthings.de/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- 5. FAQPage Schema – alle 30 Fragen -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"Wann wurde der Film erfunden?","acceptedAnswer":{"@type":"Answer","text":"Es gibt keinen einzelnen Erfindungsmoment. Die Grundlagen wurden über Jahrzehnte gelegt: Die Camera Obscura war seit der Antike bekannt. 1832 entwickelte Joseph Plateau das Phénakistiskop. 1878 fotografierte Eadweard Muybridge ein galoppierendes Pferd mit 24 Kameras. 1891 meldete Thomas Edison das Kinetoskop zum Patent an. Den Durchbruch als öffentliches Medium schafften die Gebrüder Lumière am 28. Dezember 1895 mit der ersten kommerziellen Filmvorführung im Grand Café in Paris."}},
-        {"@type":"Question","name":"Wann begann die Ära des Tonfilms?","acceptedAnswer":{"@type":"Answer","text":"Der Tonfilm begann offiziell am 6. Oktober 1927 mit 'The Jazz Singer' von Alan Crosland. Al Jolson sprach darin den legendären Satz: 'Wait a minute, wait a minute, you ain't heard nothin' yet!' Bis 1930 hatten die meisten großen Studios auf Tonfilm umgestellt."}},
-        {"@type":"Question","name":"Wann wurde Farbfilm eingeführt?","acceptedAnswer":{"@type":"Answer","text":"Das erste praktikable Farbfilmsystem war Technicolor, das ab 1922 eingesetzt wurde. Der Durchbruch kam 1939 mit 'Vom Winde verweht' und 'Der Zauberer von Oz'. Kodak Eastmancolor (1950) machte Farbfilm erschwinglich, sodass er ab Mitte der 1950er Jahre zum Standard wurde."}},
-        {"@type":"Question","name":"Was ist die Nouvelle Vague?","acceptedAnswer":{"@type":"Answer","text":"Die Nouvelle Vague war eine französische Filmbewegung der späten 1950er und 1960er Jahre, angeführt von Jean-Luc Godard, François Truffaut und Claude Chabrol. Sie lehnten Studiokonventionen ab, drehten mit kleinen Crews auf den Straßen von Paris und behandelten den Regisseur als 'Auteur' – als eigentlichen Autor des Films."}},
-        {"@type":"Question","name":"Wann begann die Ära der Computeranimation (CGI) im Film?","acceptedAnswer":{"@type":"Answer","text":"Die ersten CGI-Sequenzen im Kinofilm erschienen 1973 in 'Westworld'. Den eigentlichen Durchbruch markierte 'Jurassic Park' (1993), wo photoreale CGI-Dinosaurier erstmals überzeugend mit echten Schauspielern interagierten. 'Toy Story' (1995) war der erste vollständig computeranimierte Spielfilm."}},
-        {"@type":"Question","name":"Was ist der Steadicam?","acceptedAnswer":{"@type":"Answer","text":"Die Steadicam wurde 1975 von Garrett Brown erfunden. Es ist ein mechanisches Stabilisierungssystem, das die Kamera vom Körper des Kameramanns entkoppelt und trotzdem frei beweglich hält. Stanley Kubrick nutzte sie für die berühmten Flur-Fahrten in 'The Shining' (1980)."}},
-        {"@type":"Question","name":"Was ist New Hollywood?","acceptedAnswer":{"@type":"Answer","text":"New Hollywood (ca. 1967–1980) war eine Bewegung junger amerikanischer Regisseure, die das alte Studiosystem aufbrachen. Francis Ford Coppola, Martin Scorsese, Steven Spielberg und George Lucas schufen ein neues amerikanisches Kino. Schlüsselfilme: 'Bonnie und Clyde' (1967), 'Der Pate' (1972), 'Taxi Driver' (1976)."}},
-        {"@type":"Question","name":"Wie hat KI die Filmproduktion verändert?","acceptedAnswer":{"@type":"Answer","text":"KI hat die Filmproduktion bereits verändert: De-Aging von Schauspielern ('The Irishman', 2019), Stimmenklonen, automatisiertes Colorgrading, KI-gestützte Schnittvorschläge und Virtual Production mit LED-Walls. 2024 erschütterte OpenAIs Sora die Branche. Gleichzeitig führten KI-Bedenken zu den großen Hollywood-Streiks von 2023 (SAG-AFTRA, WGA)."}},
-        {"@type":"Question","name":"Was ist die Kuleschow-Wirkung?","acceptedAnswer":{"@type":"Answer","text":"Der sowjetische Filmtheoretiker Lew Kuleschow zeigte in den frühen 1920er Jahren: Dasselbe neutrale Gesicht eines Schauspielers, geschnitten mit einem Suppenteller, einem Sarg oder einem spielenden Kind, wurde als hungrig, traurig oder glücklich interpretiert. Bedeutung im Film entsteht nicht durch einzelne Bilder, sondern durch ihre Kombination."}},
-        {"@type":"Question","name":"Wann wurde der analoge Film durch digitale Technik abgelöst?","acceptedAnswer":{"@type":"Answer","text":"Der Übergang verlief graduell über etwa 15 Jahre. 'Star Wars Episode I' (1999) war der erste große Film, der teilweise digital gedreht wurde. Bis 2012 hatten die meisten Kinos weltweit auf digitale Projektion umgestellt."}}
+        {"@type":"Question","name":"Wann wurde der Film erfunden?","acceptedAnswer":{"@type":"Answer","text":"Es gibt keinen einzelnen Erfindungsmoment. Die Grundlagen wurden über Jahrzehnte gelegt: Die Camera Obscura war seit der Antike bekannt. 1832 entwickelte Joseph Plateau das Phénakistiskop, das erste Gerät zur Darstellung von Bewegungsillusion. 1878 fotografierte Eadweard Muybridge ein galoppierendes Pferd mit 24 Kameras und bewies damit, dass das Auge Bewegung aus Einzelbildern konstruiert. 1891 meldete Thomas Edison das Kinetoskop zum Patent an. Den Durchbruch als öffentliches Medium schafften die Gebrüder Lumière am 28. Dezember 1895 mit der ersten kommerziellen Filmvorführung im Grand Café in Paris."}},
+        {"@type":"Question","name":"Was war das erste Filmstudio der Geschichte?","acceptedAnswer":{"@type":"Answer","text":"Thomas Edisons 'Black Maria' in West Orange, New Jersey (1893) gilt als erstes Filmstudio der Welt. Es war ein drehbares schwarzes Gebäude, das der Sonne folgte, um maximales Tageslicht für die Aufnahmen zu nutzen. Dort entstanden die ersten Kinetoskop-Filme für Edisons Guckkastenautomaten."}},
+        {"@type":"Question","name":"Wie funktioniert die Illusion von Bewegung im Film?","acceptedAnswer":{"@type":"Answer","text":"Das Gehirn verbindet schnell aufeinanderfolgende Einzelbilder zu einer scheinbar fließenden Bewegung – ein Effekt, der als 'Phi-Phänomen' oder 'Beta-Bewegung' bezeichnet wird. Beim klassischen Kinofilm werden 24 Einzelbilder pro Sekunde projiziert. Jedes Bild erscheint kurz, dann folgt eine Dunkelphase, während das nächste Bild einrastet. Das Auge nimmt die Dunkelphase kaum wahr und empfindet die Abfolge als kontinuierliche Bewegung."}},
+        {"@type":"Question","name":"Wann begann die Ära des Tonfilms?","acceptedAnswer":{"@type":"Answer","text":"Der Tonfilm begann offiziell am 6. Oktober 1927 mit 'The Jazz Singer' von Alan Crosland. Al Jolson sprach darin den legendären Satz: 'Wait a minute, wait a minute, you ain't heard nothin' yet!' Das war kein vollständiger Tonfilm – nur wenige Szenen hatten synchronen Ton – aber es war der Moment, der die Stummfilmära beendete. Bis 1930 hatten die meisten großen Studios auf Tonfilm umgestellt."}},
+        {"@type":"Question","name":"Warum konnten viele Stummfilmstars im Tonfilm nicht Fuß fassen?","acceptedAnswer":{"@type":"Answer","text":"Der Übergang zum Tonfilm war für viele Stars brutal. Einige hatten Akzente, die nicht zum Image passten – ausländische Stars wie Emil Jannings oder Pola Negri verloren ihr Publikum. Andere hatten Stimmen, die zur Leinwandpersönlichkeit nicht passten. Dazu kam: Die frühen Tonfilmkameras mussten in schalldichten Kästen eingesperrt werden ('Blimp'), was die freie Kamerabewegung des Stummfilms zunichte machte. Die gesamte Filmsprache musste neu erfunden werden."}},
+        {"@type":"Question","name":"Wann wurde Farbfilm eingeführt?","acceptedAnswer":{"@type":"Answer","text":"Erste Farbexperimente gab es bereits um 1900 mit handkoloriertem Film. Das erste praktikable Farbfilmsystem war Technicolor, das ab 1922 eingesetzt wurde. Der Durchbruch kam 1939 mit 'Vom Winde verweht' und 'Der Zauberer von Oz', beide in dem aufwendigen Drei-Streifen-Technicolor-Verfahren gedreht. Kodak Eastmancolor (1950) machte Farbfilm erschwinglich und einfacher handhabbar, sodass er ab Mitte der 1950er Jahre zum Standard wurde."}},
+        {"@type":"Question","name":"Was ist der Unterschied zwischen 35mm und anderen Filmformaten?","acceptedAnswer":{"@type":"Answer","text":"35mm ist das Standardformat der Filmgeschichte, eingeführt von Thomas Edison und William Dickson um 1892. Es bietet ein gutes Gleichgewicht zwischen Bildqualität und Kosten. 70mm liefert deutlich höhere Auflösung und wird für Großproduktionen genutzt. 16mm ist ein günstigeres Format für Dokumentarfilme und unabhängige Produktionen. Super 8 war das Heimfilmformat der 1960er bis 1980er Jahre. Heute hat digitales Kino (DCI 4K) analoge Formate weitgehend verdrängt."}},
+        {"@type":"Question","name":"Was ist die Nouvelle Vague und warum war sie so einflussreich?","acceptedAnswer":{"@type":"Answer","text":"Die Nouvelle Vague ('Neue Welle') war eine französische Filmbewegung der späten 1950er und 1960er Jahre, angeführt von Jean-Luc Godard, François Truffaut und Claude Chabrol. Sie lehnten Studiokonventionen ab, drehten mit kleinen Crews und natürlichem Licht auf den Straßen von Paris, experimentierten mit Schnitttechnik (Jump Cuts), brachen die vierte Wand und behandelten den Regisseur als 'Auteur'. Ihre Ideen beeinflussten New Hollywood, das Neue Deutsche Kino und praktisch jeden Arthouse-Film seither."}},
+        {"@type":"Question","name":"Was ist ein Jump Cut und wer hat ihn populär gemacht?","acceptedAnswer":{"@type":"Answer","text":"Ein Jump Cut ist ein Schnitt zwischen zwei Einstellungen, die sich nur minimal unterscheiden – dasselbe Motiv, leicht veränderte Position oder Zeit. Das Ergebnis ist ein 'Sprung' im Bild, der die Kontinuität bewusst unterbricht. Jean-Luc Godard machte den Jump Cut in 'Außer Atem' (1960) berühmt. Was ursprünglich als Fehler galt, wurde zum Stilmittel: Der Zuschauer wird daran erinnert, dass er einen Film schaut."}},
+        {"@type":"Question","name":"Wann und wie entstand Hollywood?","acceptedAnswer":{"@type":"Answer","text":"Hollywood als Filmzentrum entstand um 1910–1915. Filmemacher aus dem Osten der USA zogen nach Südkalifornien, angelockt vom ganzjährigen Sonnenschein, der vielfältigen Landschaft und – laut Überlieferung – um den Patentpool von Thomas Edisons MPPC zu umgehen. Carl Laemmle gründete 1915 Universal City, das erste große Filmstudio. Bis 1920 war Hollywood das unbestrittene Zentrum der Weltfilmproduktion."}},
+        {"@type":"Question","name":"Was war das 'Goldene Zeitalter' Hollywoods?","acceptedAnswer":{"@type":"Answer","text":"Das Goldene Zeitalter Hollywoods (ca. 1927–1960) war die Ära des Studiosystems: MGM, Paramount, Warner Bros., RKO und 20th Century Fox kontrollierten Produktion, Distribution und Kinos. Stars waren exklusiv an Studios gebunden. Es entstanden die großen Genres: Musical, Western, Screwball Comedy, Film Noir. Technisch war es die Zeit des Tonfilms, des Technicolor-Farbfilms und der Breitwandformate wie CinemaScope (1953)."}},
+        {"@type":"Question","name":"Was ist der 'Auteur'-Begriff im Film?","acceptedAnswer":{"@type":"Answer","text":"Der Auteur-Begriff wurde von den Kritikern der Cahiers du Cinéma – vor allem François Truffaut – in den 1950er Jahren geprägt. Die These: Der Regisseur ist der eigentliche Autor eines Films. Ein echter Auteur erkenne man daran, dass sich sein persönlicher Stil, seine Themen und seine Weltsicht durch alle seine Filme ziehen – unabhängig vom Stoff oder den Produzenten. Die Theorie revolutionierte die Filmkritik und wertete den Regisseur gegenüber dem Studiosystem auf."}},
+        {"@type":"Question","name":"Was ist der Steadicam und wie veränderte er das Kino?","acceptedAnswer":{"@type":"Answer","text":"Die Steadicam wurde 1975 von Garrett Brown erfunden und erstmals 1976 in 'Bound for Glory' eingesetzt. Es ist ein mechanisches Stabilisierungssystem, das die Kamera vom Körper des Kameramanns entkoppelt und trotzdem frei beweglich hält. Das Ergebnis: fließende, schwebende Einstellungen. Stanley Kubrick nutzte sie für die berühmten Flur-Fahrten in 'The Shining' (1980), Scorsese für die Copacabana-Sequenz in 'Goodfellas' (1990)."}},
+        {"@type":"Question","name":"Wann begann die Ära der Computeranimation (CGI) im Film?","acceptedAnswer":{"@type":"Answer","text":"Die ersten CGI-Sequenzen im Kinofilm erschienen 1973 in 'Westworld'. Der erste vollständig computeranimierte Charakter war der 'Genesis-Effekt' in 'Star Trek II' (1982). Den eigentlichen Durchbruch markierte 'Jurassic Park' (1993), wo photoreale CGI-Dinosaurier erstmals überzeugend mit echten Schauspielern interagierten. 'Toy Story' (1995) war der erste vollständig computeranimierte Spielfilm."}},
+        {"@type":"Question","name":"Was ist der Unterschied zwischen CGI und praktischen Effekten?","acceptedAnswer":{"@type":"Answer","text":"Praktische Effekte entstehen am Set: Modelle, Miniaturen, Pyrotechnik, Masken, Animatronics. CGI entsteht am Computer in der Postproduktion. Praktische Effekte erzeugen reales Licht, reale Schatten und reale Reaktionen der Schauspieler. CGI ermöglicht Dinge, die physisch unmöglich sind. Die meisten modernen Blockbuster kombinieren beide Ansätze."}},
+        {"@type":"Question","name":"Was ist New Hollywood und welche Filme gehören dazu?","acceptedAnswer":{"@type":"Answer","text":"New Hollywood (ca. 1967–1980) war eine Bewegung junger amerikanischer Regisseure, die das alte Studiosystem aufbrachen. Francis Ford Coppola, Martin Scorsese, Steven Spielberg, Brian De Palma und George Lucas schufen ein neues amerikanisches Kino. Schlüsselfilme: 'Bonnie und Clyde' (1967), 'Easy Rider' (1969), 'Der Pate' (1972), 'Chinatown' (1974), 'Taxi Driver' (1976)."}},
+        {"@type":"Question","name":"Wie hat 'Star Wars' die Filmindustrie verändert?","acceptedAnswer":{"@type":"Answer","text":"'Star Wars' (1977) veränderte Hollywood auf mehreren Ebenen gleichzeitig. Kommerziell: Es erfand das moderne Blockbuster-System mit Sommerstart, globalem Marketing und Merchandising. Technisch: George Lucas gründete Industrial Light & Magic (ILM), das die Spezialeffekte-Industrie revolutionierte. Strukturell: Es verschob den Fokus der Studios von kleinen, charaktergetriebenen Filmen hin zu großen Franchise-Produktionen."}},
+        {"@type":"Question","name":"Was ist der Dolby-Sound und wann wurde er eingeführt?","acceptedAnswer":{"@type":"Answer","text":"Dolby Stereo wurde 1975 eingeführt und erstmals in 'A Star Is Born' (1976) eingesetzt. Dolby Surround (1982) und Dolby Digital (1992, erstmals in 'Batman Returns') erweiterten das System auf 5.1-Kanäle. Dolby Atmos (2012) fügte eine dreidimensionale Klangebene hinzu. Parallel entwickelte Lucasfilm THX (1983) als Qualitätsstandard für Kinowiedergabe."}},
+        {"@type":"Question","name":"Wann wurde der analoge Film durch digitale Technik abgelöst?","acceptedAnswer":{"@type":"Answer","text":"Der Übergang verlief graduell über etwa 15 Jahre. 'Star Wars Episode I' (1999) war der erste große Film, der teilweise digital gedreht wurde. Bis 2012 hatten die meisten Kinos weltweit auf digitale Projektion umgestellt. Heute drehen nur noch wenige Regisseure bewusst auf Film – darunter Christopher Nolan und Quentin Tarantino."}},
+        {"@type":"Question","name":"Was ist der nicht-lineare Schnitt (NLE) und wie hat er den Filmschnitt verändert?","acceptedAnswer":{"@type":"Answer","text":"Nicht-linearer Schnitt bedeutet, dass Szenen in beliebiger Reihenfolge bearbeitet werden können, ohne das Material physisch zu zerschneiden. Das erste digitale NLE-System war der Avid Media Composer (1989). Apple Final Cut Pro (1999) demokratisierte den Schnitt für unabhängige Filmemacher. NLE machte Experimente risikolos und beschleunigte den Schnitt dramatisch."}},
+        {"@type":"Question","name":"Was ist die '180-Grad-Regel' und warum ist sie wichtig?","acceptedAnswer":{"@type":"Answer","text":"Die 180-Grad-Regel ist eine Grundregel der Filmsprache: Bei einer Szene mit zwei oder mehr Personen gibt es eine imaginäre Achse zwischen ihnen. Alle Kamerapositionen sollten auf derselben Seite dieser Achse bleiben. Das Überschreiten der Achse lässt die Personen scheinbar die Seiten wechseln und desorientiert den Zuschauer."}},
+        {"@type":"Question","name":"Was ist Motion Capture und in welchen Filmen wurde es eingesetzt?","acceptedAnswer":{"@type":"Answer","text":"Motion Capture ist ein Verfahren, bei dem die Bewegungen von Schauspielern durch Sensoren oder Kameras aufgezeichnet und auf digitale Charaktere übertragen werden. Der Durchbruch kam mit 'Der Herr der Ringe' (2001–2003), wo Andy Serkis als Gollum die erste vollständig MoCap-basierte Filmrolle spielte. 'Avatar' (2009) kombinierte MoCap mit Echtzeit-Vorschau auf dem Set."}},
+        {"@type":"Question","name":"Wie hat das Internet die Filmindustrie verändert?","acceptedAnswer":{"@type":"Answer","text":"Das Internet veränderte die Filmindustrie auf mehreren Ebenen: Distribution (Streaming statt Kino oder DVD), Finanzierung (Crowdfunding), Marketing (Social Media, Trailer-Kultur) und Produktion. Netflix startete 2007 seinen Streaming-Dienst und begann 2013 mit 'House of Cards' eigene Serien zu produzieren. Heute konkurrieren Netflix, Amazon, Disney+, Apple TV+ und andere direkt mit den traditionellen Studios."}},
+        {"@type":"Question","name":"Was ist IMAX und wie unterscheidet es sich vom normalen Kino?","acceptedAnswer":{"@type":"Answer","text":"IMAX (Image Maximum) wurde 1970 entwickelt. Es nutzt ein deutlich größeres Filmformat (70mm horizontal statt vertikal) für massiv höhere Auflösung. IMAX-Leinwände sind bis zu 30 Meter hoch. Regisseure wie Christopher Nolan drehen Teile ihrer Filme in echtem IMAX-Format, um die volle Bildqualität zu nutzen."}},
+        {"@type":"Question","name":"Was ist der Unterschied zwischen einem Dolly und einem Kran im Film?","acceptedAnswer":{"@type":"Answer","text":"Ein Dolly ist ein fahrbares Gestell, auf dem die Kamera montiert wird – für horizontale Bewegungen. Ein Kran hebt die Kamera in die Höhe und ermöglicht vertikale Bewegungen sowie Übersichtsperspektiven. Der erste Kamerawagen wurde um 1907 entwickelt. Heute gibt es auch Drohnen für Luftaufnahmen."}},
+        {"@type":"Question","name":"Was ist die 'Kuleschow-Wirkung' und was sagt sie über das Kino aus?","acceptedAnswer":{"@type":"Answer","text":"Der sowjetische Filmtheoretiker Lew Kuleschow zeigte in den frühen 1920er Jahren: Dasselbe neutrale Gesicht eines Schauspielers, geschnitten mit einem Suppenteller, einem Sarg oder einem spielenden Kind, wurde als hungrig, traurig oder glücklich interpretiert. Die Kuleschow-Wirkung beweist: Bedeutung im Film entsteht nicht durch einzelne Bilder, sondern durch ihre Kombination."}},
+        {"@type":"Question","name":"Was ist ein 'MacGuffin' und wer hat den Begriff geprägt?","acceptedAnswer":{"@type":"Answer","text":"Ein MacGuffin ist ein Handlungselement – ein Objekt, ein Ziel, ein Geheimnis –, das die Figuren motiviert und die Handlung vorantreibt, dessen eigentlicher Inhalt aber für die Geschichte irrelevant ist. Alfred Hitchcock prägte und popularisierte den Begriff. Klassische MacGuffins: der Koffer in 'Pulp Fiction', die Pläne des Todessterns in 'Star Wars'."}},
+        {"@type":"Question","name":"Wie hat KI die Filmproduktion bisher verändert?","acceptedAnswer":{"@type":"Answer","text":"KI hat die Filmproduktion auf mehreren Ebenen bereits verändert: De-Aging und digitale Verjüngung von Schauspielern ('The Irishman', 2019), Stimmenklonen für verstorbene Darsteller, automatisiertes Colorgrading, KI-gestützte Schnittvorschläge, Generierung von Hintergründen (Virtual Production mit LED-Walls). 2024 erschütterte OpenAIs Sora die Branche. Gleichzeitig führten KI-Bedenken zu den großen Hollywood-Streiks von 2023 (SAG-AFTRA, WGA)."}},
+        {"@type":"Question","name":"Was ist der Unterschied zwischen einem Drehbuch und einem Treatment?","acceptedAnswer":{"@type":"Answer","text":"Ein Treatment ist eine Kurzfassung der Filmgeschichte – typischerweise 5 bis 30 Seiten – die Handlung, Charaktere und Ton beschreibt, aber noch keine ausgearbeiteten Dialoge enthält. Ein Drehbuch ist das vollständige Dokument mit allen Szenen, Dialogen und Regieanweisungen. Die Standardformatierung: eine Seite entspricht etwa einer Minute Laufzeit. Ein abendfüllendes Spielfilm-Drehbuch hat typischerweise 90–120 Seiten."}},
+        {"@type":"Question","name":"Welche Filme gelten als die wichtigsten der Filmgeschichte?","acceptedAnswer":{"@type":"Answer","text":"Das British Film Institute (Sight & Sound) wählt alle zehn Jahre: 'Vertigo' (Hitchcock) führte 2012, 'Jeanne Dielman' (Akerman) 2022. Das American Film Institute nennt 'Citizen Kane' (Welles, 1941) als wichtigsten amerikanischen Film. Technisch wegweisend: 'Reise zum Mond' (Méliès, 1902), 'Panzerkreuzer Potemkin' (Eisenstein, 1925), 'Citizen Kane' (1941), 'Rashomon' (Kurosawa, 1950), 'Außer Atem' (Godard, 1960), '2001: Odyssee im Weltraum' (Kubrick, 1968), 'Star Wars' (Lucas, 1977), 'Jurassic Park' (Spielberg, 1993)."}}
       ]
     }
     </script>

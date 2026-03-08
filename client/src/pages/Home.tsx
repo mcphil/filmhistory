@@ -337,7 +337,7 @@ function Hero() {
       <motion.div className="absolute inset-0" style={{ y: imgY }}>
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/101220242/eMM848s9vZH5Nks5dZfxni/hero_filmgeschichte-F9SUwMhE4m8eKkhEjp3pS6.webp"
-          alt=""
+          alt="Filmstreifen mit historischen Filmszenen – Symbolbild für die Geschichte des Bewegtbildes von der Camera Obscura bis zur KI"
           className="w-full h-full object-cover brightness-40"
         />
       </motion.div>
