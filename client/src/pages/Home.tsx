@@ -15,6 +15,7 @@ import { epochs, milestoneTable, glossary } from "@/lib/timelineData";
 import { epochsEn, milestoneTableEn, glossaryEn, uiEn } from "@/lib/timelineData.en";
 import type { TimelineEntry, GlossaryEntry } from "@/lib/timelineData";
 import { sources } from "@/lib/sourcesData";
+import { faqDe, faqEn } from "@/lib/faqData";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // ─── Type metadata ──────────────────────────────────────────────────────────────
@@ -274,6 +275,7 @@ function SideNav({ activeEpoch, onSelect }: { activeEpoch: string; onSelect: (id
     ...epochList.map(e => ({ id: e.id, label: e.era, years: e.years })),
     { id: "meilensteine", label: lang === "de" ? "Überblick" : "Overview", years: "" },
     { id: "glossar",      label: lang === "de" ? "Glossar"   : "Glossary",  years: "" },
+    { id: "fragen",       label: lang === "de" ? "Fragen"    : "Questions", years: "" },
     { id: "quellen",      label: lang === "de" ? "Quellen"   : "Sources",   years: "" },
   ];
 
@@ -558,6 +560,46 @@ function GlossarySection() {
           })}
         </div>
       )}
+    </section>
+  );
+}
+
+
+// ─── FAQ-Sektion ──────────────────────────────────────────────────────────────────
+
+function FaqSection() {
+  const { lang } = useLanguage();
+  const faqData = lang === "de" ? faqDe : faqEn;
+
+  return (
+    <section id="fragen" className="epoch-section">
+      <div className="epoch-header">
+        <span className="label-overline">
+          {lang === "de" ? "Wissen" : "Knowledge"}
+        </span>
+        <h2 className="epoch-title">
+          {lang === "de" ? "Fragen" : "Questions"}
+        </h2>
+        <p className="epoch-desc" style={{ color: "#dedede" }}>
+          {lang === "de"
+            ? `${faqData.length} Fragen und Antworten rund um die Geschichte des Films – für Einsteiger und Filminteressierte.`
+            : `${faqData.length} questions and answers about the history of film – for beginners and film enthusiasts.`}
+        </p>
+      </div>
+
+      <div className="faq-list">
+        {faqData.map((item) => (
+          <details key={item.id} className="faq-item" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+            <summary className="faq-question" itemProp="name">
+              {item.question}
+              <span className="faq-chevron" aria-hidden="true">›</span>
+            </summary>
+            <div className="faq-answer" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+              <p itemProp="text">{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
     </section>
   );
 }
@@ -1002,6 +1044,9 @@ export default function Home() {
 
             {/* Glossar */}
             <GlossarySection />
+
+            {/* Fragen / FAQ */}
+            <FaqSection />
 
             {/* Quellen */}
             <SourcesSection />
