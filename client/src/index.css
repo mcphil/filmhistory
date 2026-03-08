@@ -336,31 +336,31 @@
 /* ── Label / badge ── */
 .label-overline {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #fbbf24; /* 11.64:1 AAA – was amber/0.6 */
 }
 .label-overline-muted {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #909090; /* 6.21:1 AA – was #dedede/0.45 */
 }
 .label-year-mono {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: #fbbf24; /* 11.64:1 AAA – was amber/0.70 */
 }
 .label-index-mono {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   color: #808080; /* 4.92:1 AA – was #dedede/0.30 (FAIL) */
 }
 .label-epoch-tag {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   color: #909090; /* 6.21:1 AA – was #dedede/0.40 */
 }
 .label-source-meta {
@@ -372,7 +372,7 @@
 /* ── Table header ── */
 .table-th-gold {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #fbbf24; /* 11.64:1 AAA – was amber/0.6 */
@@ -380,7 +380,7 @@
 }
 .table-th-muted {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #909090; /* 6.21:1 AA – was #dedede/0.40 */
@@ -419,7 +419,7 @@
 /* ── Language toggle ── */
 .lang-btn {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   padding: 0.25rem 0.625rem;
   transition: all 0.2s;
@@ -448,7 +448,7 @@
 }
 .sidenav-year {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   color: #a0a0a0; /* 7.43:1 AAA – was #dedede/0.55 */
 }
 
@@ -472,7 +472,7 @@
 /* ── Closing footer text ── */
 .closing-footer {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* 12px */
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #808080; /* 4.92:1 AA – was #dedede/0.30 (FAIL) */
