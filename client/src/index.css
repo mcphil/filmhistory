@@ -509,7 +509,11 @@
 .site-footer-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem 0.6rem;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 /* KI badge */
@@ -551,50 +555,13 @@
   font-size: 12px;
 }
 
-.site-footer-ai-notice {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.site-footer-ai-text {
+.site-footer-oneliner {
   font-family: var(--font-body);
-  font-size: 13px;
-  line-height: 1.5;
-  color: #b0b0b0;
-}
-
-.site-footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.3rem 2rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.site-footer-company {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-
-.site-footer-company-name {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
-  color: #d0d0d0 !important;
-}
-
-.site-footer-address {
-  font-family: var(--font-mono);
   font-size: 12px;
-  color: #707070;
-  letter-spacing: 0.03em;
+  line-height: 1.5;
+  color: #909090;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Shared link style */
@@ -611,7 +578,7 @@
   text-decoration-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Push page content above fixed footer (matches footer height ~90px) */
+/* Push page content above fixed footer (single-line bar ~44px) */
 .footer-spacer {
-  height: 96px;
+  height: 52px;
 }
