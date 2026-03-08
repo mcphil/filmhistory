@@ -101,18 +101,18 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-2 flex-wrap">
-                <span className="font-mono-ui text-xs tracking-widest text-amber-400/60">
+                <span className="font-mono-ui text-xs tracking-widest text-amber-400">
                   {entry.year}
                 </span>
                 <span className={`font-body text-[10px] px-2 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
                   {meta.label}
                 </span>
               </div>
-              <h3 className="heading-entry-title text-base md:text-[17px] text-white/88 leading-snug">
+              <h3 className="heading-entry-title text-base md:text-[17px] text-[#dedede] leading-snug">
                 {entry.title}
               </h3>
             </div>
-            <div className={`flex-shrink-0 mt-1.5 transition-transform duration-300 text-white/25 ${expanded ? "rotate-180" : ""}`}>
+            <div className={`flex-shrink-0 mt-1.5 transition-transform duration-300 text-[#808080] ${expanded ? "rotate-180" : ""}`}>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -280,7 +280,7 @@ function MilestoneTable() {
               >
                 <td className="label-year-mono py-3 pr-8 whitespace-nowrap">{row.year}</td>
                 <td className="font-body text-body py-3 pr-8 text-sm">{row.technik}</td>
-                <td className="font-body text-body py-3 text-sm opacity-65">{row.filmsprache}</td>
+                <td className="font-body text-body py-3 text-sm">{row.filmsprache}</td>
               </motion.tr>
             ))}
           </tbody>
@@ -416,7 +416,7 @@ function Hero() {
 
             <button
               onClick={() => document.getElementById("epoch-vorfilm")?.scrollIntoView({ behavior: "smooth" })}
-              className="font-body inline-flex items-center gap-2 text-sm text-amber-400/75 hover:text-amber-400 transition-colors"
+              className="font-body inline-flex items-center gap-2 text-sm text-amber-400 hover:text-amber-400 transition-colors"
             >
               <span>{lang === "de" ? "Timeline erkunden" : uiEn.heroLink}</span>
               <motion.div
@@ -511,7 +511,7 @@ function GlossarySection() {
       {/* Search + Filter */}
       <div className="flex flex-col sm:flex-row gap-3 mb-8">
         <div className="relative flex-1 max-w-sm">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-white/25" width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-[#808080]" width="14" height="14" viewBox="0 0 14 14" fill="none">
             <circle cx="6" cy="6" r="4.5" stroke="currentColor" strokeWidth="1.3"/>
             <path d="M10 10l2.5 2.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
           </svg>
@@ -532,7 +532,7 @@ function GlossarySection() {
                 key={cat}
                 onClick={() => setActiveCategory(isActive ? null : cat)}
                 className={`font-body text-[11px] px-3 py-2 rounded-sm border tracking-wide transition-all ${
-                  isActive ? meta.color : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/65"
+                  isActive ? meta.color : "border-white/10 text-[#909090] hover:border-white/20 hover:text-[#a8a8a8]"
                 }`}
               >
                 {meta.label}
@@ -544,7 +544,7 @@ function GlossarySection() {
 
       {/* Glossary entries */}
       {filtered.length === 0 ? (
-        <p className="font-body text-body text-sm opacity-40">
+        <p className="font-body text-[#909090] text-sm">
           {lang === "de" ? "Keine Einträge gefunden." : "No entries found."}
         </p>
       ) : (
@@ -574,16 +574,16 @@ function GlossarySection() {
                             {meta.label}
                           </span>
                           {entry.year && (
-                            <span className="font-mono-ui text-[10px] text-amber-400/50">
+                            <span className="font-mono-ui text-[10px] text-amber-400">
                               {entry.year}
                             </span>
                           )}
                         </div>
-                        <h3 className="heading-entry-title text-base text-white/90 leading-snug">
+                        <h3 className="heading-entry-title text-base text-[#dedede] leading-snug">
                           {entry.term}
                         </h3>
                       </div>
-                      <div className={`flex-shrink-0 mt-1 transition-transform duration-300 text-white/25 ${isExpanded ? "rotate-180" : ""}`}>
+                      <div className={`flex-shrink-0 mt-1 transition-transform duration-300 text-[#808080] ${isExpanded ? "rotate-180" : ""}`}>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                           <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -684,7 +684,7 @@ function SourcesSection() {
               className={`font-body text-[11px] px-3 py-1.5 rounded-sm border tracking-wide transition-all ${
                 activeEpoch === ep
                   ? "border-amber-400/40 text-amber-400 bg-amber-400/8"
-                  : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/65"
+                  : "border-white/10 text-[#909090] hover:border-white/20 hover:text-[#a8a8a8]"
               }`}
             >
               {ep}
@@ -702,7 +702,7 @@ function SourcesSection() {
                 key={t}
                 onClick={() => setActiveType(activeType === t ? null : t)}
                 className={`font-body text-[11px] px-3 py-1.5 rounded-sm border tracking-wide transition-all ${
-                  activeType === t ? meta.color : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/65"
+                  activeType === t ? meta.color : "border-white/10 text-[#909090] hover:border-white/20 hover:text-[#a8a8a8]"
                 }`}
               >
                 {meta.label}
@@ -744,7 +744,7 @@ function SourcesSection() {
                         href={source.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="source-title-link text-sm leading-snug text-white/80 hover:text-amber-400 transition-colors group-hover:underline underline-offset-2 decoration-amber-400/30"
+                        className="source-title-link text-sm leading-snug text-[#d0d0d0] hover:text-amber-400 transition-colors group-hover:underline underline-offset-2 decoration-amber-400/30"
                       >
                         {source.title}
                       </a>
@@ -762,7 +762,7 @@ function SourcesSection() {
                       href={source.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 mt-0.5 text-white/20 hover:text-amber-400 transition-colors"
+                      className="flex-shrink-0 mt-0.5 text-[#808080] hover:text-amber-400 transition-colors"
                       aria-label={lang === "de" ? "Quelle öffnen" : "Open source"}
                     >
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -932,7 +932,7 @@ export default function Home() {
                     </h3>
                     <button
                       onClick={() => setMobileNavOpen(false)}
-                      className="text-white/40 hover:text-white/70 transition-colors"
+                      className="text-[#909090] hover:text-[#b3b3b3] transition-colors"
                     >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>

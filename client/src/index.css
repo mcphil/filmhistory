@@ -266,51 +266,43 @@
 }
 
 /* ── Text colour tokens ── */
+/* All colours WCAG AA compliant (≥4.5:1) on #0d0d0d background */
 .text-body {
-  color: #dedede;
+  color: #dedede; /* 14.45:1 AAA */
 }
 .text-muted-body {
-  color: #dedede;
-  opacity: 0.85;
+  color: #c0c0c0; /* 10.68:1 AAA – was #dedede/0.85 */
 }
 .text-gold {
-  color: #fbbf24;
+  color: #fbbf24; /* 11.64:1 AAA */
 }
 .text-nav-inactive {
-  color: #e8e8e8;
-  opacity: 0.85;
+  color: #d0d0d0; /* 12.60:1 AAA – was #e8e8e8/0.85 */
 }
 .text-nav-active {
-  color: #fbbf24;
+  color: #fbbf24; /* 11.64:1 AAA */
 }
 .text-label-muted {
-  color: #dedede;
-  opacity: 0.65;
+  color: #a8a8a8; /* 7.97:1 AAA – was #dedede/0.65 */
 }
 .text-label-faint {
-  color: #dedede;
-  opacity: 0.45;
+  color: #909090; /* 6.21:1 AA – was #dedede/0.45 */
 }
 .text-label-ghost {
-  color: #dedede;
-  opacity: 0.3;
+  color: #808080; /* 4.92:1 AA – was #dedede/0.30 (FAIL) */
 }
 .text-year {
-  color: #fbbf24;
-  opacity: 0.7;
+  color: #fbbf24; /* 11.64:1 AAA – was amber-400/0.70 */
 }
 .text-era-years {
-  color: #dedede;
-  opacity: 0.25;
+  color: #888888; /* 5.38:1 AA – was #dedede/0.25 (FAIL) */
 }
 .text-scroll-label {
-  color: #dedede;
-  opacity: 0.5;
+  color: #909090; /* 6.21:1 AA – was #dedede/0.50 */
   writing-mode: vertical-rl;
 }
 .text-sidebar-desc {
-  color: #e8e8e8;
-  opacity: 0.75;
+  color: #c8c8c8; /* 11.41:1 AAA – was #e8e8e8/0.75 */
 }
 
 /* ── Heading styles ── */
@@ -332,15 +324,13 @@
   font-family: var(--font-display);
   font-style: italic;
   font-size: 15px;
-  color: #fbbf24;
-  opacity: 0.85;
+  color: #fbbf24; /* 11.64:1 AAA – was amber/0.85 */
 }
 .closing-quote {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
-  color: #dedede;
-  opacity: 0.75;
+  color: #c8c8c8; /* 11.41:1 AAA – was #dedede/0.75 */
 }
 
 /* ── Label / badge ── */
@@ -349,39 +339,34 @@
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: oklch(0.828 0.189 84.429 / 0.6);
+  color: #fbbf24; /* 11.64:1 AAA – was amber/0.6 */
 }
 .label-overline-muted {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #dedede;
-  opacity: 0.45;
+  color: #909090; /* 6.21:1 AA – was #dedede/0.45 */
 }
 .label-year-mono {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: #fbbf24;
-  opacity: 0.7;
+  color: #fbbf24; /* 11.64:1 AAA – was amber/0.70 */
 }
 .label-index-mono {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #dedede;
-  opacity: 0.3;
+  color: #808080; /* 4.92:1 AA – was #dedede/0.30 (FAIL) */
 }
 .label-epoch-tag {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #dedede;
-  opacity: 0.4;
+  color: #909090; /* 6.21:1 AA – was #dedede/0.40 */
 }
 .label-source-meta {
   font-family: var(--font-body);
   font-weight: 300;
-  color: #dedede;
-  opacity: 0.5;
+  color: #a0a0a0; /* 7.43:1 AAA – was #dedede/0.50 */
 }
 
 /* ── Table header ── */
@@ -390,8 +375,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fbbf24;
-  opacity: 0.6;
+  color: #fbbf24; /* 11.64:1 AAA – was amber/0.6 */
   font-weight: 400;
 }
 .table-th-muted {
@@ -399,8 +383,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #dedede;
-  opacity: 0.4;
+  color: #909090; /* 6.21:1 AA – was #dedede/0.40 */
   font-weight: 400;
 }
 
@@ -446,10 +429,10 @@
   color: oklch(0.828 0.189 84.429);
 }
 .lang-btn-inactive {
-  color: oklch(1 0 0 / 0.35);
+  color: #909090; /* 6.21:1 AA – was white/0.35 (FAIL) */
 }
 .lang-btn-inactive:hover {
-  color: oklch(1 0 0 / 0.6);
+  color: #d0d0d0; /* 12.60:1 AAA – was white/0.6 */
 }
 
 /* ── Sidebar nav ── */
@@ -461,21 +444,18 @@
 .sidenav-label-inactive {
   font-family: var(--font-body);
   font-weight: 400;
-  color: #e8e8e8;
-  opacity: 0.85;
+  color: #d0d0d0; /* 12.60:1 AAA – was #e8e8e8/0.85 */
 }
 .sidenav-year {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #dedede;
-  opacity: 0.55;
+  color: #a0a0a0; /* 7.43:1 AAA – was #dedede/0.55 */
 }
 
 /* ── Mobile drawer ── */
 .drawer-title {
   font-family: var(--font-display);
-  color: #dedede;
-  opacity: 0.75;
+  color: #c8c8c8; /* 11.41:1 AAA – was #dedede/0.75 */
 }
 
 /* ── Source item ── */
@@ -495,16 +475,14 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #dedede;
-  opacity: 0.3;
+  color: #808080; /* 4.92:1 AA – was #dedede/0.30 (FAIL) */
 }
 
 /* ── Sources stand note ── */
 .sources-stand {
   font-family: var(--font-body);
   font-weight: 300;
-  color: #dedede;
-  opacity: 0.35;
+  color: #888888; /* 5.38:1 AA – was #dedede/0.35 (FAIL) */
 }
 
 /* ── Intro text ── */
