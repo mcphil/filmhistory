@@ -1,0 +1,249 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Design: "Dunkles Lichtspiel" – Dark Editorial Cinema
+  - Hintergrund: Fast-Schwarz wie ein Kinosaal
+  - Akzent: Bernstein/Gold für Meilensteine
+  - Typografie: Cormorant Garamond (Display) + Lato (Body) + JetBrains Mono (Daten)
+  - Licht als Erzähler, Dunkelheit als Bühne
+*/
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom design tokens */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Lato', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Film grain noise */
+  --noise-opacity: 0.035;
+}
+
+:root {
+  --radius: 0.25rem;
+  
+  /* Dark cinema palette */
+  --background: oklch(0.09 0.005 60);
+  --foreground: oklch(0.92 0.01 70);
+  --card: oklch(0.12 0.006 60);
+  --card-foreground: oklch(0.90 0.01 70);
+  --popover: oklch(0.12 0.006 60);
+  --popover-foreground: oklch(0.90 0.01 70);
+  
+  /* Gold/Amber as primary */
+  --primary: oklch(0.72 0.12 75);
+  --primary-foreground: oklch(0.09 0.005 60);
+  
+  /* Muted dark */
+  --secondary: oklch(0.16 0.006 60);
+  --secondary-foreground: oklch(0.75 0.01 70);
+  --muted: oklch(0.15 0.005 60);
+  --muted-foreground: oklch(0.55 0.01 70);
+  --accent: oklch(0.18 0.008 60);
+  --accent-foreground: oklch(0.90 0.01 70);
+  
+  /* Destructive / crisis red */
+  --destructive: oklch(0.48 0.18 22);
+  --destructive-foreground: oklch(0.92 0.01 70);
+  
+  --border: oklch(0.22 0.008 60);
+  --input: oklch(0.18 0.006 60);
+  --ring: oklch(0.72 0.12 75);
+  
+  /* Charts */
+  --chart-1: oklch(0.72 0.12 75);
+  --chart-2: oklch(0.60 0.10 75);
+  --chart-3: oklch(0.48 0.18 22);
+  --chart-4: oklch(0.55 0.08 200);
+  --chart-5: oklch(0.65 0.06 150);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.08 0.005 60);
+  --sidebar-foreground: oklch(0.92 0.01 70);
+  --sidebar-primary: oklch(0.72 0.12 75);
+  --sidebar-primary-foreground: oklch(0.09 0.005 60);
+  --sidebar-accent: oklch(0.14 0.006 60);
+  --sidebar-accent-foreground: oklch(0.90 0.01 70);
+  --sidebar-border: oklch(0.18 0.006 60);
+  --sidebar-ring: oklch(0.72 0.12 75);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.75;
+    /* Subtle film grain via SVG noise */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  
+  code, .mono {
+    font-family: var(--font-mono);
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href] {
+    @apply cursor-pointer;
+  }
+  
+  ::selection {
+    background-color: oklch(0.72 0.12 75 / 0.3);
+    color: oklch(0.95 0.01 70);
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.09 0.005 60);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.30 0.01 60);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.72 0.12 75 / 0.6);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* Gold accent line */
+  .gold-line {
+    background: linear-gradient(90deg, transparent, oklch(0.72 0.12 75), transparent);
+    height: 1px;
+  }
+  
+  /* Glow effect for gold elements */
+  .gold-glow {
+    text-shadow: 0 0 30px oklch(0.72 0.12 75 / 0.4);
+  }
+  
+  /* Film perforation dots */
+  .perforation {
+    width: 8px;
+    height: 12px;
+    border-radius: 2px;
+    background: oklch(0.18 0.006 60);
+    border: 1px solid oklch(0.25 0.008 60);
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineGrow {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, oklch(0.72 0.12 75), oklch(0.85 0.08 75), oklch(0.72 0.12 75));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
