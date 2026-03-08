@@ -786,87 +786,52 @@ function SourcesSection() {
 }
 
 // ─── Closing Quote ──────────────────────────────────────────────────────────────
-// ─── Footer (fixed bottom bar with expand panel) ────────────────────────────────────────────────────────────────────
+// ─── Footer (fixed bottom bar, always fully visible) ────────────────────────────────────────────────────────────────────
 function SiteFooter() {
   const { lang } = useLanguage();
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <footer className="site-footer">
-      {/* Expanded detail panel */}
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            key="footer-panel"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            style={{ overflow: "hidden" }}
-          >
-            <div className="site-footer-panel">
-              {/* KI notice */}
-              <div className="site-footer-ai-notice">
-                <span className="site-footer-ai-badge">KI</span>
-                <p className="site-footer-ai-text">
-                  {lang === "de" ? (
-                    <>
-                      Diese Website ist komplett KI-generiert – Recherche, Design, Umsetzung, Fact-Checking und Übersetzung –
-                      mit{" "}<a href="https://manus.im" target="_blank" rel="noopener noreferrer" className="site-footer-link">Manus.im</a>{" "}
-                      unter der Regie von{" "}
-                      <a href="https://philipp.huberty.de" target="_blank" rel="noopener noreferrer" className="site-footer-link">Philipp Huberty</a>.
-                    </>
-                  ) : (
-                    <>
-                      This website was entirely AI-generated – research, design, implementation, fact-checking and translation –
-                      using{" "}<a href="https://manus.im" target="_blank" rel="noopener noreferrer" className="site-footer-link">Manus.im</a>,
-                      directed by{" "}
-                      <a href="https://philipp.huberty.de" target="_blank" rel="noopener noreferrer" className="site-footer-link">Philipp Huberty</a>.
-                    </>
-                  )}
-                </p>
-              </div>
-              <div className="site-footer-divider" />
-              <div className="site-footer-bottom">
-                <div className="site-footer-company">
-                  <a href="https://smartthings.de" target="_blank" rel="noopener noreferrer" className="site-footer-link site-footer-company-name">
-                    Smart Things Internetkommunikation GmbH
-                  </a>
-                  <span className="site-footer-address">Wichernstr. 6 · 42653 Solingen</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Always-visible bar */}
-      <div className="site-footer-bar" onClick={() => setExpanded(e => !e)}>
-        <div className="site-footer-bar-left">
+      <div className="site-footer-inner">
+        {/* Row 1: KI notice */}
+        <div className="site-footer-ai-notice">
           <span className="site-footer-ai-badge">KI</span>
-          <span className="site-footer-bar-text">
-            {lang === "de" ? "Komplett KI-generiert mit Manus.im · Philipp Huberty" : "Entirely AI-generated with Manus.im · Philipp Huberty"}
-          </span>
+          <p className="site-footer-ai-text">
+            {lang === "de" ? (
+              <>
+                Diese Website ist komplett KI-generiert – Recherche, Design, Umsetzung, Fact-Checking und Übersetzung –
+                mit{" "}<a href="https://manus.im" target="_blank" rel="noopener noreferrer" className="site-footer-link">Manus.im</a>{" "}
+                unter der Regie von{" "}
+                <a href="https://philipp.huberty.de" target="_blank" rel="noopener noreferrer" className="site-footer-link">Philipp Huberty</a>.
+              </>
+            ) : (
+              <>
+                This website was entirely AI-generated – research, design, implementation, fact-checking and translation –
+                using{" "}<a href="https://manus.im" target="_blank" rel="noopener noreferrer" className="site-footer-link">Manus.im</a>,
+                directed by{" "}
+                <a href="https://philipp.huberty.de" target="_blank" rel="noopener noreferrer" className="site-footer-link">Philipp Huberty</a>.
+              </>
+            )}
+          </p>
         </div>
-        <div className="site-footer-bar-right">
-          <nav className="site-footer-legal" onClick={e => e.stopPropagation()}>
+
+        {/* Row 2: Company + Legal */}
+        <div className="site-footer-bottom">
+          <div className="site-footer-company">
+            <a href="https://smartthings.de" target="_blank" rel="noopener noreferrer" className="site-footer-link site-footer-company-name">
+              Smart Things Internetkommunikation GmbH
+            </a>
+            <span className="site-footer-address">Wichernstr. 6 · 42653 Solingen</span>
+          </div>
+          <nav className="site-footer-legal">
             <a href="https://smartthings.de/impressum" target="_blank" rel="noopener noreferrer" className="site-footer-legal-link">
-              {lang === "de" ? "Impressum" : "Legal"}
+              {lang === "de" ? "Impressum" : "Legal Notice"}
             </a>
             <span className="site-footer-legal-sep">·</span>
             <a href="https://smartthings.de/datenschutzhinweise" target="_blank" rel="noopener noreferrer" className="site-footer-legal-link">
-              {lang === "de" ? "Datenschutz" : "Privacy"}
+              {lang === "de" ? "Datenschutz" : "Privacy Policy"}
             </a>
           </nav>
-          <span className="site-footer-toggle">
-            <motion.svg
-              width="12" height="12" viewBox="0 0 12 12" fill="none"
-              animate={{ rotate: expanded ? 0 : 180 }}
-              transition={{ duration: 0.2 }}
-            >
-              <path d="M2 8L6 4L10 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </motion.svg>
-          </span>
         </div>
       </div>
     </footer>

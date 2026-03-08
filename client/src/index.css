@@ -505,31 +505,11 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Collapsed bar (always visible) */
-.site-footer-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.55rem 1.5rem;
+/* Inner wrapper */
+.site-footer-inner {
   max-width: 1280px;
   margin: 0 auto;
-  cursor: pointer;
-  user-select: none;
-}
-
-.site-footer-bar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.site-footer-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
+  padding: 0.75rem 1.5rem 0.6rem;
 }
 
 /* KI badge */
@@ -543,16 +523,7 @@
   border-radius: 2px;
   flex-shrink: 0;
   font-weight: 700;
-}
-
-.site-footer-bar-text {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: #909090;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 40vw;
+  margin-top: 0.1rem;
 }
 
 /* Legal links in bar */
@@ -580,48 +551,18 @@
   font-size: 12px;
 }
 
-/* Expand toggle chevron */
-.site-footer-toggle {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: #606060;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: color 0.2s;
-  flex-shrink: 0;
-}
-
-.site-footer-toggle:hover {
-  color: #fbbf24;
-}
-
-/* Expanded panel */
-.site-footer-panel {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 1.25rem 1.5rem 1.25rem;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
 .site-footer-ai-notice {
   display: flex;
   align-items: flex-start;
-  gap: 0.875rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .site-footer-ai-text {
   font-family: var(--font-body);
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #b0b0b0;
-}
-
-.site-footer-divider {
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.06);
-  margin-bottom: 0.875rem;
 }
 
 .site-footer-bottom {
@@ -629,13 +570,17 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem 2rem;
+  gap: 0.3rem 2rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .site-footer-company {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .site-footer-company-name {
@@ -666,7 +611,7 @@
   text-decoration-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Push page content above fixed footer */
+/* Push page content above fixed footer (matches footer height ~90px) */
 .footer-spacer {
-  height: 44px;
+  height: 96px;
 }
