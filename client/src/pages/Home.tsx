@@ -272,7 +272,8 @@ function MilestoneTable() {
         </p>
       </motion.div>
 
-      <div className="overflow-x-auto -mx-4 px-4">
+      {/* Desktop: klassische Tabelle */}
+      <div className="hidden md:block overflow-x-auto -mx-4 px-4">
         <table className="w-full min-w-[500px]">
           <thead>
             <tr style={{ borderBottom: "1px solid var(--page-border)" }}>
@@ -305,6 +306,29 @@ function MilestoneTable() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile: kompakte Kartenliste */}
+      <div className="md:hidden space-y-0">
+        {table.map((row, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-10px" }}
+            transition={{ duration: 0.3, delay: Math.min(i * 0.02, 0.3) }}
+            className="py-3"
+            style={{ borderBottom: "1px solid var(--page-border-subtle)" }}
+          >
+            <div className="flex items-baseline gap-3 mb-0.5">
+              <span className="label-year-mono text-[13px] flex-shrink-0 w-14">{row.year}</span>
+              <span className="font-body text-gold text-[14px] font-medium leading-snug">{row.technik}</span>
+            </div>
+            <p className="font-body text-muted-body text-[13px] leading-relaxed pl-[4.25rem]">
+              {row.filmsprache}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
@@ -425,7 +449,7 @@ function Hero() {
             </div>
 
             {/* Hero title – always white on dark hero image */}
-            <h1 className="heading-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white mb-5 leading-none">
+            <h1 className="heading-display text-[2.6rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white mb-5 leading-[1.05]">
               {lang === "de" ? (
                 <>
                   Die Geschichte<br />
@@ -605,7 +629,7 @@ function GlossarySection() {
           {lang === "de" ? "Keine Einträge gefunden." : "No entries found."}
         </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="glossar-list">
           {filtered.map((entry, i) => {
             const meta = categoryMeta[entry.category as keyof typeof categoryMeta];
             const color = theme === "dark" ? meta.colorDark : meta.colorLight;
@@ -619,7 +643,7 @@ function GlossarySection() {
                 transition={{ duration: 0.35, delay: Math.min(i * 0.02, 0.3) }}
               >
                 <div
-                  className="rounded-sm h-full"
+                  className="rounded-sm"
                   style={{ border: "1px solid var(--page-border)", background: "var(--page-bg-card)" }}
                 >
                   <div className="p-4">
@@ -1087,14 +1111,15 @@ export default function Home() {
             </div>
           </aside>
 
-          {/* ── Mobile FAB ── */}
-          <div className="lg:hidden fixed bottom-6 right-6 z-40">
+          {/* ── Mobile FAB (links unten, damit kein Konflikt mit BackToTop rechts) ── */}
+          <div className="lg:hidden fixed bottom-6 left-4 z-40">
             <button
               onClick={() => setMobileNavOpen(true)}
               className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl shadow-black/50"
               style={{ background: "var(--gold)", color: "var(--page-bg)" }}
+              aria-label={lang === "de" ? "Navigation öffnen" : "Open navigation"}
             >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                 <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </button>
@@ -1144,6 +1169,72 @@ export default function Home() {
                     <ThemeToggle />
                   </div>
                   <SideNav activeEpoch={activeEpoch} onSelect={handleNavSelect} />
+
+                  {/* Legende */}
+                  <div
+                    className="mt-6 pt-5 space-y-2"
+                    style={{ borderTop: "1px solid var(--page-border-strong)" }}
+                  >
+                    <p className="font-mono-ui text-[9px] tracking-[0.25em] uppercase mb-3 text-label-muted">
+                      {lang === "de" ? "Legende" : "Legend"}
+                    </p>
+                    {Object.entries(typeMeta).map(([key, meta]) => (
+                      <div key={key} className="flex items-center gap-2">
+                        <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${meta.dot}`} />
+                        <span className="font-body text-nav-inactive text-[13px]">
+                          {meta.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Footer-Links im Drawer */}
+                  <div
+                    className="mt-6 pt-5"
+                    style={{ borderTop: "1px solid var(--page-border-strong)" }}
+                  >
+                    <p className="font-mono-ui text-[9px] tracking-[0.25em] uppercase mb-3 text-label-muted">
+                      {lang === "de" ? "Rechtliches" : "Legal"}
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href="https://smartthings.de"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-[13px] transition-colors"
+                        style={{ color: "var(--text-nav-inactive-color)" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "var(--gold)")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "var(--text-nav-inactive-color)")}
+                      >
+                        Smart Things GmbH
+                      </a>
+                      <a
+                        href="https://smartthings.de/impressum"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-[13px] transition-colors"
+                        style={{ color: "var(--text-nav-inactive-color)" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "var(--gold)")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "var(--text-nav-inactive-color)")}
+                      >
+                        {lang === "de" ? "Impressum" : "Legal Notice"}
+                      </a>
+                      <a
+                        href="https://smartthings.de/datenschutzhinweise"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-[13px] transition-colors"
+                        style={{ color: "var(--text-nav-inactive-color)" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "var(--gold)")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "var(--text-nav-inactive-color)")}
+                      >
+                        {lang === "de" ? "Datenschutz" : "Privacy Policy"}
+                      </a>
+                    </div>
+                    <p className="font-body text-[11px] mt-4" style={{ color: "var(--text-ghost-color)" }}>
+                      Wichernstr. 6 · 42653 Solingen
+                    </p>
+                  </div>
                 </motion.div>
               </>
             )}
