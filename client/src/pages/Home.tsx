@@ -72,7 +72,6 @@ function FilmPerforations({ count = 8, vertical = false }: { count?: number; ver
 
 // ─── Entry Card ────────────────────────────────────────────────────────────────
 function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
-  const [expanded, setExpanded] = useState(false);
   const { lang } = useLanguage();
   const typeMeta = lang === "de" ? typeMetaDe : typeMetaEn;
   const meta = typeMeta[entry.type];
@@ -87,63 +86,39 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
     >
       {/* Connector dot */}
       <div className="absolute -left-[25px] top-5 hidden md:flex items-center justify-center">
-        <div className={`w-2 h-2 rounded-full border ${meta.line} ${meta.dot} opacity-70 group-hover:opacity-100 transition-opacity`} />
+        <div className={`w-2 h-2 rounded-full border ${meta.line} ${meta.dot} opacity-70`} />
       </div>
 
-      <button
-        className={`w-full text-left rounded-sm border transition-all duration-300 ${
-          expanded ? `${meta.line} bg-white/4` : "border-white/7 bg-white/2 hover:border-white/14 hover:bg-white/4"
-        }`}
-        onClick={() => setExpanded(!expanded)}
-      >
+      <div className={`rounded-sm border ${meta.line} bg-white/4`}>
         <div className="p-4 md:p-5">
           {/* Header */}
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2 flex-wrap">
-                <span className="font-mono-ui text-[12px] tracking-widest text-amber-400">
-                  {entry.year}
-                </span>
-                <span className={`font-body text-[12px] px-2 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
-                  {meta.label}
-                </span>
-              </div>
-              <h3 className="heading-entry-title text-base md:text-[17px] text-[#dedede] leading-snug">
-                {entry.title}
-              </h3>
-            </div>
-            <div className={`flex-shrink-0 mt-1.5 transition-transform duration-300 text-[#808080] ${expanded ? "rotate-180" : ""}`}>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <span className="font-mono-ui text-[12px] tracking-widest text-amber-400">
+              {entry.year}
+            </span>
+            <span className={`font-body text-[12px] px-2 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
+              {meta.label}
+            </span>
           </div>
+          <h3 className="heading-entry-title text-base md:text-[17px] text-[#dedede] leading-snug mb-2">
+            {entry.title}
+          </h3>
 
           {/* Body */}
-          <p className={`font-body text-body text-base leading-relaxed mt-2 transition-all duration-300 ${expanded ? "" : "line-clamp-2"}`}>
+          <p className="font-body text-body text-base leading-relaxed">
             {entry.body}
           </p>
 
           {/* Quote */}
-          <AnimatePresence>
-            {expanded && entry.quote && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <blockquote className="mt-4 pl-4 border-l-2 border-amber-400/40">
-                  <p className="quote-text leading-relaxed">
-                    {entry.quote}
-                  </p>
-                </blockquote>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {entry.quote && (
+            <blockquote className="mt-4 pl-4 border-l-2 border-amber-400/40">
+              <p className="quote-text leading-relaxed">
+                {entry.quote}
+              </p>
+            </blockquote>
+          )}
         </div>
-      </button>
+      </div>
     </motion.div>
   );
 }
@@ -466,7 +441,6 @@ const categoryMetaEn: Record<string, { label: string; color: string; dot: string
 function GlossarySection() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [expandedTerm, setExpandedTerm] = useState<string | null>(null);
   const { lang } = useLanguage();
 
   const glossaryData: GlossaryEntry[] = lang === "de" ? glossary : glossaryEn;
@@ -551,7 +525,6 @@ function GlossarySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {filtered.map((entry, i) => {
             const meta = categoryMeta[entry.category];
-            const isExpanded = expandedTerm === entry.term;
             return (
               <motion.div
                 key={entry.term}
@@ -560,50 +533,26 @@ function GlossarySection() {
                 viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.35, delay: Math.min(i * 0.02, 0.3) }}
               >
-                <button
-                  className={`w-full text-left rounded-sm border transition-all duration-200 ${
-                    isExpanded ? `${meta.color.split(" ")[2]} border-white/15` : "border-white/7 bg-white/2 hover:border-white/14 hover:bg-white/3"
-                  }`}
-                  onClick={() => setExpandedTerm(isExpanded ? null : entry.term)}
-                >
+                <div className={`rounded-sm border border-white/12 bg-white/3`}>
                   <div className="p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className={`font-body text-[12px] px-1.5 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
-                            {meta.label}
-                          </span>
-                          {entry.year && (
-                            <span className="font-mono-ui text-[12px] text-amber-400">
-                              {entry.year}
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="heading-entry-title text-base text-[#dedede] leading-snug">
-                          {entry.term}
-                        </h3>
-                      </div>
-                      <div className={`flex-shrink-0 mt-1 transition-transform duration-300 text-[#808080] ${isExpanded ? "rotate-180" : ""}`}>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                    </div>
-                    <AnimatePresence>
-                      {isExpanded && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="font-body text-body text-base leading-relaxed mt-3 overflow-hidden"
-                        >
-                          {entry.definition}
-                        </motion.p>
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <span className={`font-body text-[12px] px-1.5 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
+                        {meta.label}
+                      </span>
+                      {entry.year && (
+                        <span className="font-mono-ui text-[12px] text-amber-400">
+                          {entry.year}
+                        </span>
                       )}
-                    </AnimatePresence>
+                    </div>
+                    <h3 className="heading-entry-title text-base text-[#dedede] leading-snug mb-2">
+                      {entry.term}
+                    </h3>
+                    <p className="font-body text-body text-base leading-relaxed">
+                      {entry.definition}
+                    </p>
                   </div>
-                </button>
+                </div>
               </motion.div>
             );
           })}
