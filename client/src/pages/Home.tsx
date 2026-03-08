@@ -616,7 +616,7 @@ function GlossarySection() {
 // ─── Quellenverzeichnis ──────────────────────────────────────────────────────────────
 const sourceTypeMetaDe: Record<string, { label: string; color: string }> = {
   wikipedia:  { label: "Wikipedia",                   color: "text-sky-300 border-sky-300/25 bg-sky-300/5" },
-  buch:       { label: "Buch",                         color: "text-amber-300 border-amber-300/25 bg-amber-300/5" },
+  buch:       { label: "Buch",                         color: "text-amber-400 border-amber-400/25 bg-amber-400/5" },
   artikel:    { label: "Artikel / Fachpresse",         color: "text-yellow-100 border-yellow-100/20 bg-yellow-100/4" },
   archiv:     { label: "Archiv / Museum",              color: "text-emerald-300 border-emerald-300/25 bg-emerald-300/5" },
   offiziell:  { label: "Offizielle Quelle",            color: "text-violet-300 border-violet-300/25 bg-violet-300/5" },
@@ -625,7 +625,7 @@ const sourceTypeMetaDe: Record<string, { label: string; color: string }> = {
 
 const sourceTypeMetaEn: Record<string, { label: string; color: string }> = {
   wikipedia:  { label: "Wikipedia",        color: "text-sky-300 border-sky-300/25 bg-sky-300/5" },
-  buch:       { label: "Book",             color: "text-amber-300 border-amber-300/25 bg-amber-300/5" },
+  buch:       { label: "Book",             color: "text-amber-400 border-amber-400/25 bg-amber-400/5" },
   artikel:    { label: "Article / Press",  color: "text-yellow-100 border-yellow-100/20 bg-yellow-100/4" },
   archiv:     { label: "Archive / Museum", color: "text-emerald-300 border-emerald-300/25 bg-emerald-300/5" },
   offiziell:  { label: "Official Source",  color: "text-violet-300 border-violet-300/25 bg-violet-300/5" },

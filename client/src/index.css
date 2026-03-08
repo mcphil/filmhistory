@@ -70,7 +70,7 @@
   --popover-foreground: oklch(0.90 0.01 70);
   
   /* Gold/Amber as primary */
-  --primary: oklch(0.72 0.12 75);
+  --primary: oklch(0.828 0.189 84.429);
   --primary-foreground: oklch(0.09 0.005 60);
   
   /* Muted dark */
@@ -87,11 +87,11 @@
   
   --border: oklch(0.22 0.008 60);
   --input: oklch(0.18 0.006 60);
-  --ring: oklch(0.72 0.12 75);
+  --ring: oklch(0.828 0.189 84.429);
   
   /* Charts */
-  --chart-1: oklch(0.72 0.12 75);
-  --chart-2: oklch(0.60 0.10 75);
+  --chart-1: oklch(0.828 0.189 84.429);
+  --chart-2: oklch(0.828 0.189 84.429);
   --chart-3: oklch(0.48 0.18 22);
   --chart-4: oklch(0.55 0.08 200);
   --chart-5: oklch(0.65 0.06 150);
@@ -99,12 +99,12 @@
   /* Sidebar */
   --sidebar: oklch(0.08 0.005 60);
   --sidebar-foreground: oklch(0.92 0.01 70);
-  --sidebar-primary: oklch(0.72 0.12 75);
+  --sidebar-primary: oklch(0.828 0.189 84.429);
   --sidebar-primary-foreground: oklch(0.09 0.005 60);
   --sidebar-accent: oklch(0.14 0.006 60);
   --sidebar-accent-foreground: oklch(0.90 0.01 70);
   --sidebar-border: oklch(0.18 0.006 60);
-  --sidebar-ring: oklch(0.72 0.12 75);
+  --sidebar-ring: oklch(0.828 0.189 84.429);
 }
 
 @layer base {
@@ -143,7 +143,7 @@
   }
   
   ::selection {
-    background-color: oklch(0.72 0.12 75 / 0.3);
+    background-color: oklch(0.828 0.189 84.429 / 0.3);
     color: oklch(0.95 0.01 70);
   }
   
@@ -159,7 +159,7 @@
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.72 0.12 75 / 0.6);
+    background: oklch(0.828 0.189 84.429 / 0.6);
   }
 }
 
@@ -194,13 +194,13 @@
   
   /* Gold accent line */
   .gold-line {
-    background: linear-gradient(90deg, transparent, oklch(0.72 0.12 75), transparent);
+    background: linear-gradient(90deg, transparent, oklch(0.828 0.189 84.429), transparent);
     height: 1px;
   }
   
   /* Glow effect for gold elements */
   .gold-glow {
-    text-shadow: 0 0 30px oklch(0.72 0.12 75 / 0.4);
+    text-shadow: 0 0 30px oklch(0.828 0.189 84.429 / 0.4);
   }
   
   /* Film perforation dots */
@@ -240,7 +240,7 @@
 }
 
 .shimmer-text {
-  background: linear-gradient(90deg, oklch(0.72 0.12 75), oklch(0.85 0.08 75), oklch(0.72 0.12 75));
+  background: linear-gradient(90deg, oklch(0.828 0.189 84.429), oklch(0.828 0.189 84.429), oklch(0.828 0.189 84.429));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -274,14 +274,14 @@
   opacity: 0.85;
 }
 .text-gold {
-  color: #c9a84c;
+  color: #fbbf24;
 }
 .text-nav-inactive {
   color: #e8e8e8;
   opacity: 0.85;
 }
 .text-nav-active {
-  color: #c9a84c;
+  color: #fbbf24;
 }
 .text-label-muted {
   color: #dedede;
@@ -296,7 +296,7 @@
   opacity: 0.3;
 }
 .text-year {
-  color: #c9a84c;
+  color: #fbbf24;
   opacity: 0.7;
 }
 .text-era-years {
@@ -332,7 +332,7 @@
   font-family: var(--font-display);
   font-style: italic;
   font-size: 15px;
-  color: #c9a84c;
+  color: #fbbf24;
   opacity: 0.85;
 }
 .closing-quote {
@@ -349,7 +349,7 @@
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: oklch(0.72 0.12 75 / 0.6);
+  color: oklch(0.828 0.189 84.429 / 0.6);
 }
 .label-overline-muted {
   font-family: var(--font-mono);
@@ -362,7 +362,7 @@
 .label-year-mono {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: #c9a84c;
+  color: #fbbf24;
   opacity: 0.7;
 }
 .label-index-mono {
@@ -390,7 +390,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #c9a84c;
+  color: #fbbf24;
   opacity: 0.6;
   font-weight: 400;
 }
@@ -406,13 +406,13 @@
 
 /* ── Gradient backgrounds ── */
 .gold-divider-h {
-  background: linear-gradient(90deg, oklch(0.72 0.12 75 / 0.45), transparent);
+  background: linear-gradient(90deg, oklch(0.828 0.189 84.429 / 0.45), transparent);
 }
 .timeline-line-v {
   background: linear-gradient(
     180deg,
-    oklch(0.72 0.12 75 / 0.25) 0%,
-    oklch(0.72 0.12 75 / 0.08) 100%
+    oklch(0.828 0.189 84.429 / 0.25) 0%,
+    oklch(0.828 0.189 84.429 / 0.08) 100%
   );
 }
 .hero-gradient-bottom {
@@ -422,10 +422,10 @@
   background: linear-gradient(to right, oklch(0.09 0.005 60 / 0.7), oklch(0.09 0.005 60 / 0.2), transparent);
 }
 .progress-bar-gradient {
-  background: linear-gradient(90deg, oklch(0.72 0.12 75), oklch(0.88 0.09 75 / 0.8));
+  background: linear-gradient(90deg, oklch(0.828 0.189 84.429), oklch(0.828 0.189 84.429 / 0.8));
 }
 .scroll-line-gradient {
-  background: linear-gradient(to bottom, oklch(0.72 0.12 75 / 0.6), transparent);
+  background: linear-gradient(to bottom, oklch(0.828 0.189 84.429 / 0.6), transparent);
 }
 
 /* ── Image filter ── */
@@ -442,8 +442,8 @@
   transition: all 0.2s;
 }
 .lang-btn-active {
-  background-color: oklch(0.72 0.12 75 / 0.15);
-  color: oklch(0.72 0.12 75);
+  background-color: oklch(0.828 0.189 84.429 / 0.15);
+  color: oklch(0.828 0.189 84.429);
 }
 .lang-btn-inactive {
   color: oklch(1 0 0 / 0.35);
@@ -456,7 +456,7 @@
 .sidenav-label-active {
   font-family: var(--font-body);
   font-weight: 600;
-  color: #c9a84c;
+  color: #fbbf24;
 }
 .sidenav-label-inactive {
   font-family: var(--font-body);
