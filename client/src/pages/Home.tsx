@@ -482,8 +482,8 @@ function GlossarySection() {
         </p>
       </motion.div>
 
-      {/* Search + Filter */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-8">
+      {/* Search + Filter – sticky */}
+      <div className="sticky top-0 z-20 flex flex-col sm:flex-row gap-3 mb-8 py-3 bg-[#0d0d0d] border-b border-white/8">
         <div className="relative flex-1 max-w-sm">
           <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-[#808080]" width="14" height="14" viewBox="0 0 14 14" fill="none">
             <circle cx="6" cy="6" r="4.5" stroke="currentColor" strokeWidth="1.3"/>
