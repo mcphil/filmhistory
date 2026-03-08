@@ -886,13 +886,14 @@ export default function Home() {
   const typeMeta = lang === "de" ? typeMetaDe : typeMetaEn;
 
   useEffect(() => {
-    const ids = [...epochs.map(e => `epoch-${e.id}`), "meilensteine"];
+    const ids = [...epochs.map(e => `epoch-${e.id}`), "meilensteine", "glossar", "fragen", "quellen"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const raw = entry.target.id;
-            setActiveEpoch(raw === "meilensteine" ? "meilensteine" : raw.replace("epoch-", ""));
+            const staticIds = ["meilensteine", "glossar", "fragen", "quellen"];
+            setActiveEpoch(staticIds.includes(raw) ? raw : raw.replace("epoch-", ""));
           }
         });
       },
@@ -906,7 +907,7 @@ export default function Home() {
   }, []);
 
   const handleNavSelect = useCallback((id: string) => {
-    const targetId = ["meilensteine", "glossar", "quellen"].includes(id) ? id : `epoch-${id}`;
+    const targetId = ["meilensteine", "glossar", "fragen", "quellen"].includes(id) ? id : `epoch-${id}`;
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
     setMobileNavOpen(false);
   }, []);
