@@ -86,10 +86,10 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
     >
       {/* Connector dot */}
       <div className="absolute -left-[25px] top-5 hidden md:flex items-center justify-center">
-        <div className={`w-2 h-2 rounded-full border ${meta.line} ${meta.dot} opacity-70`} />
+        <div className={`w-2 h-2 rounded-full ${meta.dot} opacity-70`} />
       </div>
 
-      <div className={`rounded-sm border ${meta.line} bg-white/4`}>
+      <div className="rounded-sm border border-white/12 bg-white/4">
         <div className="p-4 md:p-5">
           {/* Header */}
           <div className="flex items-center gap-2 mb-2 flex-wrap">
