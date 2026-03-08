@@ -100,7 +100,7 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
               {meta.label}
             </span>
           </div>
-          <h3 className="heading-entry-title text-base md:text-[17px] text-[#dedede] leading-snug mb-2">
+          <h3 className="heading-entry-title text-base md:text-[17px] text-amber-400 leading-snug mb-2">
             {entry.title}
           </h3>
 
