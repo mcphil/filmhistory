@@ -247,3 +247,269 @@
   background-clip: text;
   animation: shimmer 4s linear infinite;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TIMELINE COMPONENT STYLES
+   "Dunkles Lichtspiel" – alle Inline-Styles aus Home.tsx ausgelagert
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Font utility classes ── */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+.font-mono-ui {
+  font-family: var(--font-mono);
+}
+
+/* ── Text colour tokens ── */
+.text-body {
+  color: #dedede;
+}
+.text-muted-body {
+  color: #dedede;
+  opacity: 0.85;
+}
+.text-gold {
+  color: #c9a84c;
+}
+.text-nav-inactive {
+  color: #e8e8e8;
+  opacity: 0.85;
+}
+.text-nav-active {
+  color: #c9a84c;
+}
+.text-label-muted {
+  color: #dedede;
+  opacity: 0.65;
+}
+.text-label-faint {
+  color: #dedede;
+  opacity: 0.45;
+}
+.text-label-ghost {
+  color: #dedede;
+  opacity: 0.3;
+}
+.text-year {
+  color: #c9a84c;
+  opacity: 0.7;
+}
+.text-era-years {
+  color: #dedede;
+  opacity: 0.25;
+}
+.text-scroll-label {
+  color: #dedede;
+  opacity: 0.5;
+  writing-mode: vertical-rl;
+}
+.text-sidebar-desc {
+  color: #e8e8e8;
+  opacity: 0.75;
+}
+
+/* ── Heading styles ── */
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 300;
+}
+.heading-display-medium {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+.heading-entry-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+/* ── Quote style ── */
+.quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: #c9a84c;
+  opacity: 0.85;
+}
+.closing-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  color: #dedede;
+  opacity: 0.75;
+}
+
+/* ── Label / badge ── */
+.label-overline {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: oklch(0.72 0.12 75 / 0.6);
+}
+.label-overline-muted {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #dedede;
+  opacity: 0.45;
+}
+.label-year-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #c9a84c;
+  opacity: 0.7;
+}
+.label-index-mono {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #dedede;
+  opacity: 0.3;
+}
+.label-epoch-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #dedede;
+  opacity: 0.4;
+}
+.label-source-meta {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: #dedede;
+  opacity: 0.5;
+}
+
+/* ── Table header ── */
+.table-th-gold {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  opacity: 0.6;
+  font-weight: 400;
+}
+.table-th-muted {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #dedede;
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+/* ── Gradient backgrounds ── */
+.gold-divider-h {
+  background: linear-gradient(90deg, oklch(0.72 0.12 75 / 0.45), transparent);
+}
+.timeline-line-v {
+  background: linear-gradient(
+    180deg,
+    oklch(0.72 0.12 75 / 0.25) 0%,
+    oklch(0.72 0.12 75 / 0.08) 100%
+  );
+}
+.hero-gradient-bottom {
+  background: linear-gradient(to top, #0d0d0d, oklch(0.09 0.005 60 / 0.3), transparent);
+}
+.hero-gradient-left {
+  background: linear-gradient(to right, oklch(0.09 0.005 60 / 0.7), oklch(0.09 0.005 60 / 0.2), transparent);
+}
+.progress-bar-gradient {
+  background: linear-gradient(90deg, oklch(0.72 0.12 75), oklch(0.88 0.09 75 / 0.8));
+}
+.scroll-line-gradient {
+  background: linear-gradient(to bottom, oklch(0.72 0.12 75 / 0.6), transparent);
+}
+
+/* ── Image filter ── */
+.epoch-bg-img {
+  filter: grayscale(60%) brightness(0.5);
+}
+
+/* ── Language toggle ── */
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.625rem;
+  transition: all 0.2s;
+}
+.lang-btn-active {
+  background-color: oklch(0.72 0.12 75 / 0.15);
+  color: oklch(0.72 0.12 75);
+}
+.lang-btn-inactive {
+  color: oklch(1 0 0 / 0.35);
+}
+.lang-btn-inactive:hover {
+  color: oklch(1 0 0 / 0.6);
+}
+
+/* ── Sidebar nav ── */
+.sidenav-label-active {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: #c9a84c;
+}
+.sidenav-label-inactive {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: #e8e8e8;
+  opacity: 0.85;
+}
+.sidenav-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #dedede;
+  opacity: 0.55;
+}
+
+/* ── Mobile drawer ── */
+.drawer-title {
+  font-family: var(--font-display);
+  color: #dedede;
+  opacity: 0.75;
+}
+
+/* ── Source item ── */
+.source-title-link {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+.source-title-plain {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: #e0e0e0;
+}
+
+/* ── Closing footer text ── */
+.closing-footer {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #dedede;
+  opacity: 0.3;
+}
+
+/* ── Sources stand note ── */
+.sources-stand {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: #dedede;
+  opacity: 0.35;
+}
+
+/* ── Intro text ── */
+.intro-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: #dedede;
+}

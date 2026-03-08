@@ -6,6 +6,7 @@
   - Vertikale Timeline mit sticky Navigation links
   - Fließtexte: #dedede (nicht-gehighlightet: opacity 0.65)
   - Zweisprachig: Deutsch / Englisch via LanguageContext
+  - Alle Styles in index.css ausgelagert – keine Inline-Styles
 */
 
 import { useState, useEffect, useCallback } from "react";
@@ -21,7 +22,7 @@ const typeMetaDe: Record<string, { label: string; color: string; dot: string; li
   technik:       { label: "Technik",       color: "text-amber-400 border-amber-400/30 bg-amber-400/8",    dot: "bg-amber-400",   line: "border-amber-400/40" },
   filmsprache:   { label: "Filmsprache",   color: "text-yellow-100 border-yellow-100/25 bg-yellow-100/5", dot: "bg-yellow-100",  line: "border-yellow-100/30" },
   gegenreaktion: { label: "Gegenreaktion", color: "text-red-400 border-red-400/30 bg-red-400/8",          dot: "bg-red-400",     line: "border-red-400/40" },
-  meilenstein:   { label: "Meilenstein",  color: "text-white border-white/20 bg-white/6",                dot: "bg-white",       line: "border-white/25" },
+  meilenstein:   { label: "Meilenstein",   color: "text-white border-white/20 bg-white/6",                dot: "bg-white",       line: "border-white/25" },
 };
 
 const typeMetaEn: Record<string, { label: string; color: string; dot: string; line: string }> = {
@@ -31,12 +32,6 @@ const typeMetaEn: Record<string, { label: string; color: string; dot: string; li
   meilenstein:   { label: "Milestone",        color: "text-white border-white/20 bg-white/6",                dot: "bg-white",       line: "border-white/25" },
 };
 
-const BODY_FONT = { fontFamily: "'Lato', sans-serif", fontWeight: 300 } as const;
-const MONO_FONT = { fontFamily: "'JetBrains Mono', monospace" } as const;
-const DISPLAY_FONT = { fontFamily: "'Cormorant Garamond', Georgia, serif" } as const;
-const TEXT_MUTED = { color: "#dedede", opacity: 0.85 } as const;
-const TEXT_BODY  = { color: "#dedede" } as const;
-
 // ─── Language Toggle ────────────────────────────────────────────────────────────
 function LanguageToggle() {
   const { lang, setLang } = useLanguage();
@@ -44,24 +39,14 @@ function LanguageToggle() {
     <div className="flex items-center gap-0.5 rounded-sm border border-white/15 overflow-hidden">
       <button
         onClick={() => setLang("de")}
-        className={`px-2.5 py-1 text-[10px] tracking-widest transition-all duration-200 ${
-          lang === "de"
-            ? "bg-amber-400/15 text-amber-400"
-            : "text-white/35 hover:text-white/60"
-        }`}
-        style={MONO_FONT}
+        className={`lang-btn ${lang === "de" ? "lang-btn-active" : "lang-btn-inactive"}`}
       >
         DE
       </button>
       <div className="w-px h-4 bg-white/10" />
       <button
         onClick={() => setLang("en")}
-        className={`px-2.5 py-1 text-[10px] tracking-widest transition-all duration-200 ${
-          lang === "en"
-            ? "bg-amber-400/15 text-amber-400"
-            : "text-white/35 hover:text-white/60"
-        }`}
-        style={MONO_FONT}
+        className={`lang-btn ${lang === "en" ? "lang-btn-active" : "lang-btn-inactive"}`}
       >
         EN
       </button>
@@ -106,13 +91,9 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
       </div>
 
       <button
-        className={`
-          w-full text-left rounded-sm border transition-all duration-300
-          ${expanded
-            ? `${meta.line} bg-white/4`
-            : "border-white/7 bg-white/2 hover:border-white/14 hover:bg-white/4"
-          }
-        `}
+        className={`w-full text-left rounded-sm border transition-all duration-300 ${
+          expanded ? `${meta.line} bg-white/4` : "border-white/7 bg-white/2 hover:border-white/14 hover:bg-white/4"
+        }`}
         onClick={() => setExpanded(!expanded)}
       >
         <div className="p-4 md:p-5">
@@ -120,31 +101,18 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-2 flex-wrap">
-                <span
-                  className="text-xs tracking-widest text-amber-400/60"
-                  style={MONO_FONT}
-                >
+                <span className="font-mono-ui text-xs tracking-widest text-amber-400/60">
                   {entry.year}
                 </span>
-                <span
-                  className={`text-[10px] px-2 py-0.5 rounded-sm border tracking-wide ${meta.color}`}
-                  style={BODY_FONT}
-                >
+                <span className={`font-body text-[10px] px-2 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
                   {meta.label}
                 </span>
               </div>
-              <h3
-                className="text-base md:text-[17px] text-white/88 leading-snug"
-                style={{ ...DISPLAY_FONT, fontWeight: 500 }}
-              >
+              <h3 className="heading-entry-title text-base md:text-[17px] text-white/88 leading-snug">
                 {entry.title}
               </h3>
             </div>
-            <div
-              className={`flex-shrink-0 mt-1.5 transition-transform duration-300 text-white/25 ${
-                expanded ? "rotate-180" : ""
-              }`}
-            >
+            <div className={`flex-shrink-0 mt-1.5 transition-transform duration-300 text-white/25 ${expanded ? "rotate-180" : ""}`}>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -152,12 +120,7 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
           </div>
 
           {/* Body */}
-          <p
-            className={`text-sm leading-relaxed mt-2 transition-all duration-300 ${
-              expanded ? "" : "line-clamp-2"
-            }`}
-            style={{ ...BODY_FONT, ...TEXT_BODY }}
-          >
+          <p className={`font-body text-body text-sm leading-relaxed mt-2 transition-all duration-300 ${expanded ? "" : "line-clamp-2"}`}>
             {entry.body}
           </p>
 
@@ -172,10 +135,7 @@ function EntryCard({ entry, index }: { entry: TimelineEntry; index: number }) {
                 className="overflow-hidden"
               >
                 <blockquote className="mt-4 pl-4 border-l-2 border-amber-400/40">
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ ...DISPLAY_FONT, fontStyle: "italic", fontSize: "15px", color: "#c9a84c", opacity: 0.85 }}
-                  >
+                  <p className="quote-text leading-relaxed">
                     {entry.quote}
                   </p>
                 </blockquote>
@@ -200,8 +160,7 @@ function EpochSection({ epochDe, epochEn }: { epochDe: typeof epochs[0]; epochEn
           <img
             src={epochDe.image}
             alt=""
-            className="w-full h-full object-cover opacity-5"
-            style={{ filter: "grayscale(60%) brightness(0.5)" }}
+            className="epoch-bg-img w-full h-full object-cover opacity-5"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d]" />
         </div>
@@ -217,18 +176,8 @@ function EpochSection({ epochDe, epochEn }: { epochDe: typeof epochs[0]; epochEn
           className="flex items-center gap-3 mb-3"
         >
           <div className="w-6 h-px bg-amber-400/50" />
-          <span
-            className="text-[10px] tracking-[0.3em] uppercase text-amber-400/60"
-            style={MONO_FONT}
-          >
-            {epoch.era}
-          </span>
-          <span
-            className="text-[10px] tracking-widest"
-            style={{ ...MONO_FONT, color: "#dedede", opacity: 0.25 }}
-          >
-            {epoch.years}
-          </span>
+          <span className="label-overline">{epoch.era}</span>
+          <span className="font-mono-ui text-[10px] tracking-widest text-era-years">{epoch.years}</span>
         </motion.div>
 
         <motion.h2
@@ -236,8 +185,7 @@ function EpochSection({ epochDe, epochEn }: { epochDe: typeof epochs[0]; epochEn
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-[2.8rem] text-white mb-2 leading-tight"
-          style={{ ...DISPLAY_FONT, fontWeight: 300 }}
+          className="heading-display text-3xl md:text-[2.8rem] text-white mb-2 leading-tight"
         >
           {epoch.subtitle}
         </motion.h2>
@@ -247,8 +195,7 @@ function EpochSection({ epochDe, epochEn }: { epochDe: typeof epochs[0]; epochEn
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-base mb-8 max-w-xl leading-relaxed"
-          style={{ ...BODY_FONT, ...TEXT_BODY }}
+          className="font-body text-body text-base mb-8 max-w-xl leading-relaxed"
         >
           {epoch.description}
         </motion.p>
@@ -259,18 +206,12 @@ function EpochSection({ epochDe, epochEn }: { epochDe: typeof epochs[0]; epochEn
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="h-px mb-10 origin-left max-w-md"
-          style={{ background: "linear-gradient(90deg, oklch(0.72 0.12 75 / 0.45), transparent)" }}
+          className="gold-divider-h h-px mb-10 origin-left max-w-md"
         />
 
         {/* Entries */}
         <div className="relative pl-0 md:pl-8">
-          <div
-            className="absolute left-0 top-0 bottom-0 w-px hidden md:block"
-            style={{
-              background: "linear-gradient(180deg, oklch(0.72 0.12 75 / 0.25) 0%, oklch(0.72 0.12 75 / 0.08) 100%)",
-            }}
-          />
+          <div className="timeline-line-v absolute left-0 top-0 bottom-0 w-px hidden md:block" />
           <div className="space-y-3">
             {epoch.entries.map((entry, i) => (
               <EntryCard key={i} entry={entry} index={i} />
@@ -298,23 +239,14 @@ function MilestoneTable() {
       >
         <div className="flex items-center gap-3 mb-3">
           <div className="w-6 h-px bg-amber-400/50" />
-          <span
-            className="text-[10px] tracking-[0.3em] uppercase text-amber-400/60"
-            style={MONO_FONT}
-          >
+          <span className="label-overline">
             {lang === "de" ? "Überblick" : "Overview"}
           </span>
         </div>
-        <h2
-          className="text-3xl md:text-[2.8rem] text-white mb-2"
-          style={{ ...DISPLAY_FONT, fontWeight: 300 }}
-        >
+        <h2 className="heading-display text-3xl md:text-[2.8rem] text-white mb-2">
           {lang === "de" ? "Technik trifft Filmsprache" : "Technology Meets Film Language"}
         </h2>
-        <p
-          className="text-base max-w-lg leading-relaxed"
-          style={{ ...BODY_FONT, ...TEXT_BODY }}
-        >
+        <p className="font-body text-body text-base max-w-lg leading-relaxed">
           {lang === "de"
             ? "Jede neue Technik hat zunächst die Filmsprache eingeschränkt, bevor sie sie befreit hat."
             : "Every new technology first constrained film language before it liberated it."}
@@ -325,22 +257,13 @@ function MilestoneTable() {
         <table className="w-full min-w-[500px]">
           <thead>
             <tr className="border-b border-white/8">
-              <th
-                className="text-left pb-3 pr-8 font-normal"
-                style={{ ...MONO_FONT, fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#c9a84c", opacity: 0.6, width: "80px" }}
-              >
+              <th className="table-th-gold text-left pb-3 pr-8 w-20">
                 {lang === "de" ? "Jahr" : "Year"}
               </th>
-              <th
-                className="text-left pb-3 pr-8 font-normal"
-                style={{ ...MONO_FONT, fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#c9a84c", opacity: 0.6 }}
-              >
+              <th className="table-th-gold text-left pb-3 pr-8">
                 {lang === "de" ? "Technik" : "Technology"}
               </th>
-              <th
-                className="text-left pb-3 font-normal"
-                style={{ ...MONO_FONT, fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#dedede", opacity: 0.4 }}
-              >
+              <th className="table-th-muted text-left pb-3">
                 {lang === "de" ? "Filmsprache" : "Film Language"}
               </th>
             </tr>
@@ -355,24 +278,9 @@ function MilestoneTable() {
                 transition={{ duration: 0.35, delay: i * 0.025 }}
                 className="border-b border-white/4 hover:bg-white/2 transition-colors"
               >
-                <td
-                  className="py-3 pr-8 whitespace-nowrap"
-                  style={{ ...MONO_FONT, fontSize: "11px", color: "#c9a84c", opacity: 0.7 }}
-                >
-                  {row.year}
-                </td>
-                <td
-                  className="py-3 pr-8 text-sm font-light"
-                  style={{ ...BODY_FONT, ...TEXT_BODY }}
-                >
-                  {row.technik}
-                </td>
-                <td
-                  className="py-3 text-sm font-light"
-                  style={{ ...BODY_FONT, color: "#dedede", opacity: 0.65 }}
-                >
-                  {row.filmsprache}
-                </td>
+                <td className="label-year-mono py-3 pr-8 whitespace-nowrap">{row.year}</td>
+                <td className="font-body text-body py-3 pr-8 text-sm">{row.technik}</td>
+                <td className="font-body text-body py-3 text-sm opacity-65">{row.filmsprache}</td>
               </motion.tr>
             ))}
           </tbody>
@@ -402,33 +310,21 @@ function SideNav({ activeEpoch, onSelect }: { activeEpoch: string; onSelect: (id
           <button
             key={item.id}
             onClick={() => onSelect(item.id)}
-            className={`
-              w-full text-left px-3 py-2.5 rounded-sm transition-all duration-200 group
-              ${isActive ? "bg-amber-400/10" : "hover:bg-white/4"}
-            `}
+            className={`w-full text-left px-3 py-2.5 rounded-sm transition-all duration-200 group ${
+              isActive ? "bg-amber-400/10" : "hover:bg-white/4"
+            }`}
           >
             <div className="flex items-center gap-2.5">
-              <div
-                className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-200 ${
-                  isActive ? "bg-amber-400 scale-125" : "bg-white/40 group-hover:bg-white/60"
-                }`}
-              />
-              <span
-                className="text-xs truncate transition-colors duration-200"
-                style={{
-                  ...BODY_FONT,
-                  fontWeight: isActive ? 600 : 400,
-                  color: isActive ? "#c9a84c" : "#e8e8e8",
-                  opacity: isActive ? 1 : 0.85,
-                }}
-              >
+              <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-200 ${
+                isActive ? "bg-amber-400 scale-125" : "bg-white/40 group-hover:bg-white/60"
+              }`} />
+              <span className={`text-xs truncate transition-colors duration-200 ${
+                isActive ? "sidenav-label-active" : "sidenav-label-inactive"
+              }`}>
                 {item.label}
               </span>
               {item.years && (
-                <span
-                  className="text-[10px] ml-auto flex-shrink-0"
-                  style={{ ...MONO_FONT, color: "#dedede", opacity: 0.55 }}
-                >
+                <span className="sidenav-year text-[10px] ml-auto flex-shrink-0">
                   {item.years.split("–")[0]}
                 </span>
               )}
@@ -446,11 +342,8 @@ function ProgressBar() {
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
-      style={{
-        scaleX,
-        background: "linear-gradient(90deg, oklch(0.72 0.12 75), oklch(0.88 0.09 75 / 0.8))",
-      }}
+      className="progress-bar-gradient fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
+      style={{ scaleX }}
     />
   );
 }
@@ -468,14 +361,13 @@ function Hero() {
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/101220242/eMM848s9vZH5Nks5dZfxni/hero_filmgeschichte-F9SUwMhE4m8eKkhEjp3pS6.webp"
           alt=""
-          className="w-full h-full object-cover"
-          style={{ filter: "brightness(0.4)" }}
+          className="w-full h-full object-cover brightness-40"
         />
       </motion.div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d]/70 via-[#0d0d0d]/20 to-transparent" />
+      <div className="hero-gradient-bottom absolute inset-0" />
+      <div className="hero-gradient-left absolute inset-0" />
 
       {/* Film perforations – top edge */}
       <div className="absolute top-6 left-0 right-0 flex justify-center">
@@ -497,39 +389,26 @@ function Hero() {
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-px bg-amber-400/60" />
-              <span
-                className="text-[10px] tracking-[0.35em] uppercase text-amber-400/65"
-                style={MONO_FONT}
-              >
+              <span className="label-overline">
                 {lang === "de" ? "Eine interaktive Timeline" : uiEn.heroLabel}
               </span>
             </div>
 
-            <h1
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white mb-5 leading-none"
-              style={{ ...DISPLAY_FONT, fontWeight: 300 }}
-            >
+            <h1 className="heading-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white mb-5 leading-none">
               {lang === "de" ? (
                 <>
                   Die Geschichte<br />
-                  <span className="text-amber-400" style={{ fontStyle: "italic" }}>
-                    des Bewegtbildes
-                  </span>
+                  <span className="text-amber-400 italic">des Bewegtbildes</span>
                 </>
               ) : (
                 <>
                   The History<br />
-                  <span className="text-amber-400" style={{ fontStyle: "italic" }}>
-                    of the Moving Image
-                  </span>
+                  <span className="text-amber-400 italic">of the Moving Image</span>
                 </>
               )}
             </h1>
 
-            <p
-              className="text-base md:text-lg max-w-lg leading-relaxed mb-8"
-              style={{ ...BODY_FONT, ...TEXT_BODY }}
-            >
+            <p className="font-body text-body text-base md:text-lg max-w-lg leading-relaxed mb-8">
               {lang === "de"
                 ? "Von der Camera Obscura bis zur KI. Wie Technik und Filmsprache sich gegenseitig herausgefordert, befreit und manchmal auch gefesselt haben."
                 : uiEn.heroSubtitle}
@@ -537,8 +416,7 @@ function Hero() {
 
             <button
               onClick={() => document.getElementById("epoch-vorfilm")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 text-sm text-amber-400/75 hover:text-amber-400 transition-colors"
-              style={BODY_FONT}
+              className="font-body inline-flex items-center gap-2 text-sm text-amber-400/75 hover:text-amber-400 transition-colors"
             >
               <span>{lang === "de" ? "Timeline erkunden" : uiEn.heroLink}</span>
               <motion.div
@@ -561,11 +439,8 @@ function Hero() {
         animate={{ opacity: 0.4 }}
         transition={{ delay: 1.8 }}
       >
-        <div className="w-px h-10 bg-gradient-to-b from-amber-400/60 to-transparent" />
-        <span
-          className="text-[9px] tracking-[0.3em] uppercase"
-          style={{ ...MONO_FONT, color: "#dedede", opacity: 0.5, writingMode: "vertical-rl" }}
-        >
+        <div className="scroll-line-gradient w-px h-10" />
+        <span className="font-mono-ui text-scroll-label text-[9px] tracking-[0.3em] uppercase">
           scroll
         </span>
       </motion.div>
@@ -619,17 +494,14 @@ function GlossarySection() {
       >
         <div className="flex items-center gap-3 mb-3">
           <div className="w-6 h-px bg-amber-400/50" />
-          <span className="text-[10px] tracking-[0.3em] uppercase text-amber-400/60" style={MONO_FONT}>
+          <span className="label-overline">
             {lang === "de" ? "Nachschlagewerk" : uiEn.glossaryLabel}
           </span>
         </div>
-        <h2
-          className="text-3xl md:text-[2.8rem] text-white mb-2"
-          style={{ ...DISPLAY_FONT, fontWeight: 300 }}
-        >
+        <h2 className="heading-display text-3xl md:text-[2.8rem] text-white mb-2">
           {lang === "de" ? "Glossar" : uiEn.glossaryTitle}
         </h2>
-        <p className="text-base max-w-lg leading-relaxed" style={{ ...BODY_FONT, ...TEXT_BODY }}>
+        <p className="font-body text-body text-base max-w-lg leading-relaxed">
           {lang === "de"
             ? `${glossaryData.length} Fachbegriffe aus Technik, Filmsprache, Bewegungen und Formaten – alphabetisch sortiert.`
             : `${glossaryData.length} ${uiEn.glossaryDesc}`}
@@ -639,10 +511,7 @@ function GlossarySection() {
       {/* Search + Filter */}
       <div className="flex flex-col sm:flex-row gap-3 mb-8">
         <div className="relative flex-1 max-w-sm">
-          <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-white/25"
-            width="14" height="14" viewBox="0 0 14 14" fill="none"
-          >
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-white/25" width="14" height="14" viewBox="0 0 14 14" fill="none">
             <circle cx="6" cy="6" r="4.5" stroke="currentColor" strokeWidth="1.3"/>
             <path d="M10 10l2.5 2.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
           </svg>
@@ -651,8 +520,7 @@ function GlossarySection() {
             placeholder={lang === "de" ? "Begriff suchen…" : uiEn.glossarySearch}
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 rounded-sm border border-white/12 bg-white/3 text-sm outline-none focus:border-amber-400/40 transition-colors"
-            style={{ ...BODY_FONT, color: "#e8e8e8" }}
+            className="font-body w-full pl-9 pr-4 py-2.5 rounded-sm border border-white/12 bg-white/3 text-sm text-nav-inactive outline-none focus:border-amber-400/40 transition-colors"
           />
         </div>
         <div className="flex gap-2 flex-wrap">
@@ -663,10 +531,9 @@ function GlossarySection() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(isActive ? null : cat)}
-                className={`text-[11px] px-3 py-2 rounded-sm border tracking-wide transition-all ${
+                className={`font-body text-[11px] px-3 py-2 rounded-sm border tracking-wide transition-all ${
                   isActive ? meta.color : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/65"
                 }`}
-                style={BODY_FONT}
               >
                 {meta.label}
               </button>
@@ -677,7 +544,7 @@ function GlossarySection() {
 
       {/* Glossary entries */}
       {filtered.length === 0 ? (
-        <p className="text-sm" style={{ ...BODY_FONT, color: "#dedede", opacity: 0.4 }}>
+        <p className="font-body text-body text-sm opacity-40">
           {lang === "de" ? "Keine Einträge gefunden." : "No entries found."}
         </p>
       ) : (
@@ -703,30 +570,20 @@ function GlossarySection() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span
-                            className={`text-[10px] px-1.5 py-0.5 rounded-sm border tracking-wide ${meta.color}`}
-                            style={BODY_FONT}
-                          >
+                          <span className={`font-body text-[10px] px-1.5 py-0.5 rounded-sm border tracking-wide ${meta.color}`}>
                             {meta.label}
                           </span>
                           {entry.year && (
-                            <span className="text-[10px] text-amber-400/50" style={MONO_FONT}>
+                            <span className="font-mono-ui text-[10px] text-amber-400/50">
                               {entry.year}
                             </span>
                           )}
                         </div>
-                        <h3
-                          className="text-base text-white/90 leading-snug"
-                          style={{ ...DISPLAY_FONT, fontWeight: 500 }}
-                        >
+                        <h3 className="heading-entry-title text-base text-white/90 leading-snug">
                           {entry.term}
                         </h3>
                       </div>
-                      <div
-                        className={`flex-shrink-0 mt-1 transition-transform duration-300 text-white/25 ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
-                      >
+                      <div className={`flex-shrink-0 mt-1 transition-transform duration-300 text-white/25 ${isExpanded ? "rotate-180" : ""}`}>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                           <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -739,8 +596,7 @@ function GlossarySection() {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.25 }}
-                          className="text-sm leading-relaxed mt-3 overflow-hidden"
-                          style={{ ...BODY_FONT, ...TEXT_BODY }}
+                          className="font-body text-body text-sm leading-relaxed mt-3 overflow-hidden"
                         >
                           {entry.definition}
                         </motion.p>
@@ -759,21 +615,21 @@ function GlossarySection() {
 
 // ─── Quellenverzeichnis ──────────────────────────────────────────────────────────────
 const sourceTypeMetaDe: Record<string, { label: string; color: string }> = {
-  wikipedia:   { label: "Wikipedia",                  color: "text-sky-300 border-sky-300/25 bg-sky-300/5" },
-  buch:        { label: "Buch",                        color: "text-amber-300 border-amber-300/25 bg-amber-300/5" },
-  artikel:     { label: "Artikel / Fachpresse",        color: "text-yellow-100 border-yellow-100/20 bg-yellow-100/4" },
-  archiv:      { label: "Archiv / Museum",             color: "text-emerald-300 border-emerald-300/25 bg-emerald-300/5" },
-  offiziell:   { label: "Offizielle Quelle",           color: "text-violet-300 border-violet-300/25 bg-violet-300/5" },
-  akademisch:  { label: "Akademisch / Fachpublikation",color: "text-rose-300 border-rose-300/25 bg-rose-300/5" },
+  wikipedia:  { label: "Wikipedia",                   color: "text-sky-300 border-sky-300/25 bg-sky-300/5" },
+  buch:       { label: "Buch",                         color: "text-amber-300 border-amber-300/25 bg-amber-300/5" },
+  artikel:    { label: "Artikel / Fachpresse",         color: "text-yellow-100 border-yellow-100/20 bg-yellow-100/4" },
+  archiv:     { label: "Archiv / Museum",              color: "text-emerald-300 border-emerald-300/25 bg-emerald-300/5" },
+  offiziell:  { label: "Offizielle Quelle",            color: "text-violet-300 border-violet-300/25 bg-violet-300/5" },
+  akademisch: { label: "Akademisch / Fachpublikation", color: "text-rose-300 border-rose-300/25 bg-rose-300/5" },
 };
 
 const sourceTypeMetaEn: Record<string, { label: string; color: string }> = {
-  wikipedia:   { label: "Wikipedia",          color: "text-sky-300 border-sky-300/25 bg-sky-300/5" },
-  buch:        { label: "Book",               color: "text-amber-300 border-amber-300/25 bg-amber-300/5" },
-  artikel:     { label: "Article / Press",    color: "text-yellow-100 border-yellow-100/20 bg-yellow-100/4" },
-  archiv:      { label: "Archive / Museum",   color: "text-emerald-300 border-emerald-300/25 bg-emerald-300/5" },
-  offiziell:   { label: "Official Source",    color: "text-violet-300 border-violet-300/25 bg-violet-300/5" },
-  akademisch:  { label: "Academic",           color: "text-rose-300 border-rose-300/25 bg-rose-300/5" },
+  wikipedia:  { label: "Wikipedia",        color: "text-sky-300 border-sky-300/25 bg-sky-300/5" },
+  buch:       { label: "Book",             color: "text-amber-300 border-amber-300/25 bg-amber-300/5" },
+  artikel:    { label: "Article / Press",  color: "text-yellow-100 border-yellow-100/20 bg-yellow-100/4" },
+  archiv:     { label: "Archive / Museum", color: "text-emerald-300 border-emerald-300/25 bg-emerald-300/5" },
+  offiziell:  { label: "Official Source",  color: "text-violet-300 border-violet-300/25 bg-violet-300/5" },
+  akademisch: { label: "Academic",         color: "text-rose-300 border-rose-300/25 bg-rose-300/5" },
 };
 
 function SourcesSection() {
@@ -801,17 +657,14 @@ function SourcesSection() {
       >
         <div className="flex items-center gap-3 mb-3">
           <div className="w-6 h-px bg-amber-400/50" />
-          <span className="text-[10px] tracking-[0.3em] uppercase text-amber-400/60" style={MONO_FONT}>
+          <span className="label-overline">
             {lang === "de" ? "Faktencheck & Belege" : uiEn.sourcesLabel}
           </span>
         </div>
-        <h2
-          className="text-3xl md:text-[2.8rem] text-white mb-2"
-          style={{ ...DISPLAY_FONT, fontWeight: 300 }}
-        >
+        <h2 className="heading-display text-3xl md:text-[2.8rem] text-white mb-2">
           {lang === "de" ? "Quellenverzeichnis" : uiEn.sourcesTitle}
         </h2>
-        <p className="text-base max-w-2xl leading-relaxed" style={{ ...BODY_FONT, ...TEXT_BODY }}>
+        <p className="font-body text-body text-base max-w-2xl leading-relaxed">
           {lang === "de"
             ? `Alle ${sources.length} Quellen wurden im Rahmen eines systematischen Faktenchecks geprüft (März 2026). Fehler und Ungenauigkeiten wurden korrigiert. Filterbar nach Epoche und Quellentyp.`
             : `All ${sources.length} ${uiEn.sourcesDesc}`}
@@ -821,26 +674,25 @@ function SourcesSection() {
       {/* Filter */}
       <div className="flex flex-col gap-3 mb-8">
         <div className="flex gap-2 flex-wrap">
-          <span className="text-[10px] tracking-[0.2em] uppercase self-center" style={{ ...MONO_FONT, color: "#dedede", opacity: 0.45 }}>
+          <span className="label-overline-muted self-center">
             {lang === "de" ? "Epoche" : uiEn.sourcesFilterEpoch}
           </span>
           {epochOptions.map(ep => (
             <button
               key={ep}
               onClick={() => setActiveEpoch(activeEpoch === ep ? null : ep)}
-              className={`text-[11px] px-3 py-1.5 rounded-sm border tracking-wide transition-all ${
+              className={`font-body text-[11px] px-3 py-1.5 rounded-sm border tracking-wide transition-all ${
                 activeEpoch === ep
                   ? "border-amber-400/40 text-amber-400 bg-amber-400/8"
                   : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/65"
               }`}
-              style={BODY_FONT}
             >
               {ep}
             </button>
           ))}
         </div>
         <div className="flex gap-2 flex-wrap">
-          <span className="text-[10px] tracking-[0.2em] uppercase self-center" style={{ ...MONO_FONT, color: "#dedede", opacity: 0.45 }}>
+          <span className="label-overline-muted self-center">
             {lang === "de" ? "Typ" : uiEn.sourcesFilterType}
           </span>
           {typeOptions.map(t => {
@@ -849,10 +701,9 @@ function SourcesSection() {
               <button
                 key={t}
                 onClick={() => setActiveType(activeType === t ? null : t)}
-                className={`text-[11px] px-3 py-1.5 rounded-sm border tracking-wide transition-all ${
+                className={`font-body text-[11px] px-3 py-1.5 rounded-sm border tracking-wide transition-all ${
                   activeType === t ? meta.color : "border-white/10 text-white/40 hover:border-white/20 hover:text-white/65"
                 }`}
-                style={BODY_FONT}
               >
                 {meta.label}
               </button>
@@ -872,23 +723,17 @@ function SourcesSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-10px" }}
               transition={{ duration: 0.3, delay: Math.min(i * 0.015, 0.4) }}
-              className="flex items-start gap-3 p-3 rounded-sm border border-white/5 bg-white/1.5 hover:border-white/10 hover:bg-white/3 transition-all group"
+              className="flex items-start gap-3 p-3 rounded-sm border border-white/5 bg-white/[0.015] hover:border-white/10 hover:bg-white/3 transition-all group"
             >
-              {/* Index */}
-              <span
-                className="text-[10px] flex-shrink-0 mt-0.5 w-7 text-right"
-                style={{ ...MONO_FONT, color: "#dedede", opacity: 0.3 }}
-              >
+              <span className="label-index-mono flex-shrink-0 mt-0.5 w-7 text-right">
                 {String(i + 1).padStart(2, "0")}
               </span>
-
-              {/* Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-sm border tracking-wide flex-shrink-0 ${meta.color}`} style={BODY_FONT}>
+                  <span className={`font-body text-[10px] px-1.5 py-0.5 rounded-sm border tracking-wide flex-shrink-0 ${meta.color}`}>
                     {meta.label}
                   </span>
-                  <span className="text-[10px] flex-shrink-0" style={{ ...MONO_FONT, color: "#dedede", opacity: 0.4 }}>
+                  <span className="label-epoch-tag font-mono-ui text-[10px] flex-shrink-0">
                     {source.epochen.join(" · ")}
                   </span>
                 </div>
@@ -899,19 +744,17 @@ function SourcesSection() {
                         href={source.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm leading-snug text-white/80 hover:text-amber-400 transition-colors group-hover:underline underline-offset-2 decoration-amber-400/30"
-                        style={{ ...BODY_FONT, fontWeight: 400 }}
+                        className="source-title-link text-sm leading-snug text-white/80 hover:text-amber-400 transition-colors group-hover:underline underline-offset-2 decoration-amber-400/30"
                       >
                         {source.title}
                       </a>
                     ) : (
-                      <span className="text-sm leading-snug" style={{ ...BODY_FONT, fontWeight: 400, color: "#e0e0e0" }}>
+                      <span className="source-title-plain text-sm leading-snug">
                         {source.title}
                       </span>
                     )}
-                    <p className="text-[11px] mt-0.5" style={{ ...BODY_FONT, color: "#dedede", opacity: 0.5 }}>
-                      {source.publisher}
-                      {source.author && ` · ${source.author}`}
+                    <p className="label-source-meta text-[11px] mt-0.5">
+                      {source.publisher}{source.author && ` · ${source.author}`}
                     </p>
                   </div>
                   {source.url && (
@@ -935,7 +778,7 @@ function SourcesSection() {
         })}
       </div>
 
-      <p className="mt-8 text-xs" style={{ ...BODY_FONT, color: "#dedede", opacity: 0.35 }}>
+      <p className="sources-stand mt-8 text-xs">
         {lang === "de" ? "Stand: März 2026. Alle Links wurden zum Zeitpunkt der Erstellung geprüft." : uiEn.sourcesStand}
       </p>
     </section>
@@ -958,19 +801,13 @@ function ClosingSection() {
           <FilmPerforations count={6} />
         </div>
 
-        <blockquote
-          className="text-2xl md:text-[2rem] leading-relaxed mb-6"
-          style={{ ...DISPLAY_FONT, fontStyle: "italic", fontWeight: 300, color: "#dedede", opacity: 0.75 }}
-        >
+        <blockquote className="closing-quote text-2xl md:text-[2rem] leading-relaxed mb-6">
           {lang === "de"
             ? "\"Der Zug fährt immer noch in den Bahnhof. Wir springen immer noch auf.\""
             : "\"The train still pulls into the station. We still jump aboard.\""}
         </blockquote>
 
-        <p
-          className="text-xs tracking-widest uppercase"
-          style={{ ...MONO_FONT, color: "#dedede", opacity: 0.3 }}
-        >
+        <p className="closing-footer">
           {lang === "de"
             ? "Geschichte des Bewegtbildes · Von den Ursprüngen bis 2026"
             : "History of the Moving Image · From the Origins to 2026"}
@@ -1015,7 +852,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#0d0d0d" }}>
+    <div className="min-h-screen bg-[#0d0d0d]">
       <ProgressBar />
       <Hero />
 
@@ -1027,10 +864,7 @@ export default function Home() {
             <div className="sticky top-8 pt-10">
               {/* Branding + Language Toggle */}
               <div className="mb-5 pb-5 border-b border-white/15">
-                <p
-                  className="text-[11px] leading-relaxed mb-3"
-                  style={{ ...BODY_FONT, color: "#e8e8e8", opacity: 0.75, fontWeight: 400 }}
-                >
+                <p className="font-body text-sidebar-desc text-[11px] leading-relaxed mb-3">
                   {lang === "de"
                     ? "Von der Camera Obscura\nbis zur KI — 2026"
                     : "From the Camera Obscura\nto AI — 2026"}
@@ -1042,19 +876,13 @@ export default function Home() {
 
               {/* Legend */}
               <div className="mt-7 pt-5 border-t border-white/15 space-y-2">
-                <p
-                  className="text-[9px] tracking-[0.25em] uppercase mb-3"
-                  style={{ ...MONO_FONT, color: "#dedede", opacity: 0.65 }}
-                >
+                <p className="label-label-muted font-mono-ui text-[9px] tracking-[0.25em] uppercase mb-3 text-label-muted">
                   {lang === "de" ? "Legende" : "Legend"}
                 </p>
                 {Object.entries(typeMeta).map(([key, meta]) => (
                   <div key={key} className="flex items-center gap-2">
                     <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${meta.dot}`} />
-                    <span
-                      className="text-[11px]"
-                      style={{ ...BODY_FONT, color: "#e8e8e8", opacity: 0.85, fontWeight: 400 }}
-                    >
+                    <span className="font-body text-nav-inactive text-[11px]">
                       {meta.label}
                     </span>
                   </div>
@@ -1072,8 +900,7 @@ export default function Home() {
           <div className="lg:hidden fixed bottom-6 right-6 z-40">
             <button
               onClick={() => setMobileNavOpen(true)}
-              className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl shadow-black/50"
-              style={{ backgroundColor: "oklch(0.72 0.12 75)", color: "#0d0d0d" }}
+              className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl shadow-black/50 bg-amber-400 text-[#0d0d0d]"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -1097,20 +924,15 @@ export default function Home() {
                   animate={{ x: 0 }}
                   exit={{ x: "100%" }}
                   transition={{ type: "spring", damping: 28, stiffness: 280 }}
-                  className="fixed right-0 top-0 bottom-0 w-64 z-50 p-6 overflow-y-auto lg:hidden border-l border-white/8"
-                  style={{ backgroundColor: "#111111" }}
+                  className="fixed right-0 top-0 bottom-0 w-64 z-50 p-6 overflow-y-auto lg:hidden border-l border-white/8 bg-[#111111]"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h3
-                      className="text-base"
-                      style={{ ...DISPLAY_FONT, color: "#dedede", opacity: 0.75 }}
-                    >
+                    <h3 className="drawer-title text-base">
                       {lang === "de" ? "Epochen" : "Epochs"}
                     </h3>
                     <button
                       onClick={() => setMobileNavOpen(false)}
-                      className="transition-colors"
-                      style={{ color: "#dedede", opacity: 0.4 }}
+                      className="text-white/40 hover:text-white/70 transition-colors"
                     >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -1140,20 +962,12 @@ export default function Home() {
                 {Object.entries(typeMeta).map(([key, meta]) => (
                   <div key={key} className="flex items-center gap-1.5">
                     <div className={`w-1.5 h-1.5 rounded-full ${meta.dot}`} />
-                    <span
-                      className="text-xs"
-                      style={{ ...BODY_FONT, ...TEXT_MUTED }}
-                    >
-                      {meta.label}
-                    </span>
+                    <span className="font-body text-muted-body text-xs">{meta.label}</span>
                   </div>
                 ))}
               </div>
 
-              <p
-                className="text-base md:text-lg leading-relaxed"
-                style={{ ...BODY_FONT, ...TEXT_BODY }}
-              >
+              <p className="intro-text text-base md:text-lg leading-relaxed">
                 {lang === "de"
                   ? "Was folgt, ist keine trockene Auflistung von Jahreszahlen. Es ist die Geschichte davon, wie Technik und Filmsprache sich gegenseitig herausgefordert, befreit und manchmal auch gefesselt haben. Wie eine neue Kamera eine neue Ästhetik erzwungen hat. Wie eine neue Ästhetik eine neue Kamera gefordert hat."
                   : "What follows is not a dry list of dates. It is the story of how technology and film language challenged, liberated and sometimes shackled each other. How a new camera forced a new aesthetic. How a new aesthetic demanded a new camera."}
