@@ -545,7 +545,7 @@ function GlossarySection() {
                         </span>
                       )}
                     </div>
-                    <h3 className="heading-entry-title text-base text-[#dedede] leading-snug mb-2">
+                    <h3 className="heading-entry-title text-base text-amber-400 leading-snug mb-2">
                       {entry.term}
                     </h3>
                     <p className="font-body text-body text-base leading-relaxed">
