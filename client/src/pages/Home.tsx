@@ -786,6 +786,63 @@ function SourcesSection() {
 }
 
 // ─── Closing Quote ──────────────────────────────────────────────────────────────
+// ─── Footer ────────────────────────────────────────────────────────────────────
+function SiteFooter() {
+  const { lang } = useLanguage();
+  return (
+    <footer className="site-footer">
+      <div className="site-footer-inner">
+        {/* KI-Hinweis */}
+        <div className="site-footer-ai-notice">
+          <span className="site-footer-ai-badge">KI</span>
+          <p className="site-footer-ai-text">
+            {lang === "de" ? (
+              <>
+                Diese Website ist komplett KI-generiert – Recherche, Design, Umsetzung, Fact-Checking und Übersetzung –
+                mit{" "}<a href="https://manus.im" target="_blank" rel="noopener noreferrer" className="site-footer-link">Manus.im</a>{" "}
+                unter der Regie von{" "}
+                <a href="https://philipp.huberty.de" target="_blank" rel="noopener noreferrer" className="site-footer-link">Philipp Huberty</a>.
+              </>
+            ) : (
+              <>
+                This website was entirely AI-generated – research, design, implementation, fact-checking and translation –
+                using{" "}<a href="https://manus.im" target="_blank" rel="noopener noreferrer" className="site-footer-link">Manus.im</a>,
+                directed by{" "}
+                <a href="https://philipp.huberty.de" target="_blank" rel="noopener noreferrer" className="site-footer-link">Philipp Huberty</a>.
+              </>
+            )}
+          </p>
+        </div>
+
+        {/* Divider */}
+        <div className="site-footer-divider" />
+
+        {/* Bottom row */}
+        <div className="site-footer-bottom">
+          {/* Company */}
+          <div className="site-footer-company">
+            <a href="https://smartthings.de" target="_blank" rel="noopener noreferrer" className="site-footer-link site-footer-company-name">
+              Smart Things Internetkommunikation GmbH
+            </a>
+            <span className="site-footer-address">Wichernstr. 6 · 42653 Solingen</span>
+          </div>
+
+          {/* Legal links */}
+          <nav className="site-footer-legal">
+            <a href="https://smartthings.de/impressum" target="_blank" rel="noopener noreferrer" className="site-footer-legal-link">
+              {lang === "de" ? "Impressum" : "Legal Notice"}
+            </a>
+            <span className="site-footer-legal-sep">·</span>
+            <a href="https://smartthings.de/datenschutzhinweise" target="_blank" rel="noopener noreferrer" className="site-footer-legal-link">
+              {lang === "de" ? "Datenschutz" : "Privacy Policy"}
+            </a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 function ClosingSection() {
   const { lang } = useLanguage();
   return (
@@ -991,6 +1048,9 @@ export default function Home() {
             {/* Closing */}
             <ClosingSection />
           </main>
+
+          {/* Footer */}
+          <SiteFooter />
         </div>
       </div>
     </div>

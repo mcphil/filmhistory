@@ -491,3 +491,119 @@
   font-weight: 300;
   color: #dedede;
 }
+
+/* ── Site Footer ──────────────────────────────────────────────────────────── */
+.site-footer {
+  background-color: #080808;
+  border-top: 1px solid rgba(251, 191, 36, 0.15); /* amber-400/15 */
+  margin-top: 0;
+}
+
+.site-footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 2rem;
+}
+
+/* KI notice row */
+.site-footer-ai-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.site-footer-ai-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #080808;
+  background-color: #fbbf24;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  font-weight: 700;
+}
+
+.site-footer-ai-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: #b0b0b0;
+}
+
+/* Divider */
+.site-footer-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.25rem;
+}
+
+/* Bottom row */
+.site-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+.site-footer-company {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.site-footer-company-name {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: #d0d0d0 !important;
+}
+
+.site-footer-address {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #808080;
+  letter-spacing: 0.03em;
+}
+
+/* Legal nav */
+.site-footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.site-footer-legal-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #909090;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer-legal-link:hover {
+  color: #fbbf24;
+}
+
+.site-footer-legal-sep {
+  color: #505050;
+  font-size: 13px;
+}
+
+/* Shared link style */
+.site-footer-link {
+  color: #fbbf24;
+  text-decoration: none;
+  transition: color 0.2s, text-decoration-color 0.2s;
+  text-decoration: underline;
+  text-decoration-color: rgba(251, 191, 36, 0.35);
+  text-underline-offset: 3px;
+}
+
+.site-footer-link:hover {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
