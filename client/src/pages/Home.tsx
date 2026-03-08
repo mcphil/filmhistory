@@ -809,6 +809,33 @@ function ClosingSection() {
 }
 
 // ─── Main Page ──────────────────────────────────────────────────────────────────
+
+// ── Back to Top Button ─────────────────────────────────────────────────────
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <motion.button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.8, pointerEvents: visible ? "auto" : "none" }}
+      transition={{ duration: 0.25 }}
+      className="fixed bottom-16 right-5 z-40 w-10 h-10 rounded-full bg-amber-400 text-[#0d0d0d] flex items-center justify-center shadow-lg hover:bg-amber-300 transition-colors"
+      aria-label="Zurück nach oben"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </motion.button>
+  );
+}
+
 export default function Home() {
   const [activeEpoch, setActiveEpoch] = useState(epochs[0].id);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -990,6 +1017,7 @@ export default function Home() {
       <div className="footer-spacer" />
 
       {/* Footer – fixed am Bottom, außerhalb des Grid-Containers */}
+      <BackToTop />
       <SiteFooter />
     </div>
   );
